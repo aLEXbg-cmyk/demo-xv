@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis XV Años · Lizette Guadalupe | Invitación Oficial de Gala</title>
+    <meta name="description"
+        content="Invitación Oficial de Gala para los XV Años de Lizette Guadalupe Esparza Díaz. Ceremonia, recepción, itinerario y confirmación de asistencia en línea (RSVP).">
+
+    <!-- Metadatos Open Graph y Twitter Cards para Tarjeta de Presentación Grande en WhatsApp (Estilo TikTok) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Mis XV Años · Lizette Guadalupe">
+    <meta property="og:title" content="✨ Mis XV Años · Lizette Guadalupe">
+    <meta property="og:description"
+        content="¡Estás cordialmente invitado a celebrar conmigo esta noche mágica e inolvidable! Toca aquí para abrir tu invitación digital con música e itinerario.">
+    <meta property="og:image" content="assets/whatsapp-preview.jpg">
+    <meta property="og:image:secure_url" content="assets/whatsapp-preview.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Invitación Oficial de Gala · Mis XV Años Lizette Guadalupe">
+
+    <!-- Twitter Card: summary_large_image activa la vista en tarjeta grande en WhatsApp / Telegram / Redes -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="✨ Mis XV Años · Lizette Guadalupe">
+    <meta name="twitter:description"
+        content="¡Estás cordialmente invitado a celebrar conmigo esta noche mágica e inolvidable! Toca aquí para abrir tu invitación interactiva.">
+    <meta name="twitter:image" content="assets/whatsapp-preview.jpg">
+
+    <!-- Tipografías de alta gama de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Framework Tailwind CSS v4 & Iconografía -->
+    <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="css/bootstrap-icons.min.css">
+
+    <!-- Hojas de Estilos (Diseño del Sistema y Animaciones) -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23451623' stroke='%23D6798E' stroke-width='4'/><text x='50%' y='62%' font-size='40' font-family='serif' font-weight='bold' fill='%23FDE8EB' text-anchor='middle'>LG</text></svg>">
+</head>
+
+<body>
+
+    <!-- Canvas de fondo para partículas doradas flotantes -->
+    <canvas id="sparkles-canvas" class="sparkles-canvas"></canvas>
+
+    <!-- Canvas para animación de confeti de gala al confirmar -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Notificación Toast -->
+    <div id="toast-msg" class="toast-notification">Notificación</div>
+
+    <!-- ========================================================
+         MODAL DE BIENVENIDA: EXPERIENCIA CON MÚSICA O EN SILENCIO
+         ======================================================== -->
+    <div id="music-prompt-modal" class="music-prompt-overlay">
+        <div class="music-prompt-card">
+            <p class="music-prompt-kicker">Estás cordialmente invitado a los</p>
+            <h2 class="music-prompt-title">MIS XV AÑOS · Lizette Guadalupe</h2>
+            <p class="music-prompt-date">16 DE ENERO DE 2026</p>
+            <div class="music-prompt-divider">
+                <span>✦</span>
+            </div>
+            <p class="music-prompt-question">¿Deseas vivir esta experiencia con música de fondo?</p>
+
+            <div class="music-prompt-buttons">
+                <button type="button" id="btn-enter-with-music" class="prompt-btn prompt-btn-music">
+                    Sí, con música
+                </button>
+                <button type="button" id="btn-enter-silent" class="prompt-btn prompt-btn-silent">
+                    En silencio
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio de Fondo: Para Elisa, Beethoven -->
+    <audio id="background-audio" preload="auto" loop>
+        <source src="assets/para-elisa.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Botón flotante discreto de audio para pausar / activar -->
+    <button type="button" id="floating-audio-btn" class="floating-audio-control" title="Activar / Pausar música"
+        aria-label="Control de música">
+        <i class="bi bi-volume-mute" id="floating-audio-icon"></i>
+    </button>
+
+    <!-- ========================================================
+         BARRA DE NAVEGACIÓN SUPERIOR ELEGANTE (STICKY NAVBAR)
+         ======================================================== -->
+    <header class="luxury-navbar">
+        <a href="#hero-section" class="nav-brand" id="nav-brand-btn" title="Volver al principio"
+            aria-label="Volver al principio de la invitación">
+            <span class="nav-monogram">LG</span>
+            <span class="nav-title">Lizette Guadalupe · XV</span>
+        </a>
+        <nav class="nav-links">
+            <a href="#hero-section" class="nav-item">Inicio</a>
+            <a href="#locations-section" class="nav-item">Ubicaciones</a>
+            <a href="#itinerary-section" class="nav-item">Itinerario</a>
+            <a href="#dresscode-section" class="nav-item">Etiqueta</a>
+            <a href="#gifts-section" class="nav-item">Regalos</a>
+            <a href="#rsvp-section" class="nav-item nav-highlight">Confirmar Asistencia</a>
+        </nav>
+    </header>
+
+    <!-- ========================================================
+         CONTENIDO PRINCIPAL DE LA INVITACIÓN
+         ======================================================== -->
+    <main class="invitation-container">
+
+        <!-- SECCIÓN HERO: FOTOGRAFÍA Y PRESENTACIÓN -->
+        <section class="hero-section" id="hero-section">
+            <div class="monogram-badge">
+                <svg viewBox="0 0 24 24">
+                    <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5m14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z" />
+                </svg>
+            </div>
+
+            <p class="hero-subtitle">En compañía de Dios y nuestra familia</p>
+            <h1 class="hero-title">MIS XV AÑOS</h1>
+            <h2 class="hero-name gold-text">Lizette Guadalupe Esparza Díaz</h2>
+            <p class="hero-date-roman">16 DE ENERO DE 2026</p>
+
+            <!-- Marco Ornamental de Gala con Medallón de la Quinceañera -->
+            <div class="photo-frame-wrapper">
+                <div class="photo-inner-frame">
+                    <div class="photo-placeholder-content">
+                        <div class="placeholder-crown">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5m14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z" />
+                            </svg>
+                        </div>
+                        <div class="placeholder-monogram">LG</div>
+                        <p class="placeholder-name">Lizette Guadalupe</p>
+                        <p class="placeholder-sub">MIS XV AÑOS</p>
+                    </div>
+                </div>
+                <div class="photo-corner-badge">16 ENE 2026</div>
+            </div>
+
+
+            <p class="hero-quote">
+                "Hay momentos en la vida que son inolvidables, y compartirlos con las personas que más quiero los hace
+                aún más especiales. Gracias por formar parte de mi historia."
+            </p>
+
+            <div class="gold-divider">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2L15 9L22 9L16 14L18 21L12 17L6 21L8 14L2 9L9 9Z" />
+                </svg>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE CUENTA REGRESIVA -->
+        <section class="countdown-section">
+            <h3 class="countdown-title">Faltan para este gran día</h3>
+            <div class="countdown-grid">
+                <div class="countdown-card">
+                    <div class="countdown-num" id="cd-dias">00</div>
+                    <div class="countdown-label">Días</div>
+                </div>
+                <div class="countdown-card">
+                    <div class="countdown-num" id="cd-horas">00</div>
+                    <div class="countdown-label">Horas</div>
+                </div>
+                <div class="countdown-card">
+                    <div class="countdown-num" id="cd-minutos">00</div>
+                    <div class="countdown-label">Min</div>
+                </div>
+                <div class="countdown-card">
+                    <div class="countdown-num" id="cd-segundos">00</div>
+                    <div class="countdown-label">Seg</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE PADRES Y PADRINOS -->
+        <section class="section-card" id="honors-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                </div>
+                <h3 class="section-title">Con la bendición de Dios</h3>
+                <p class="section-subtitle">Y el amor incondicional de mi familia</p>
+            </div>
+
+            <div class="honor-grid">
+                <div class="honor-item">
+                    <div class="honor-role">Mis Amados Padres</div>
+                    <div class="honor-names">
+                        Yolanda Díaz Soria<br>
+                        &amp; Marco Antonio Esparza Solís
+                    </div>
+                </div>
+                <div class="honor-item">
+                    <div class="honor-role">Mis Padrinos de Honor</div>
+                    <div class="honor-names">
+                        Paulina Díaz Soria<br>
+                        &amp; Espacio reservado para Padrino
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE UBICACIONES (DÓNDE Y CUÁNDO) -->
+        <section class="section-card" id="locations-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                    </svg>
+                </div>
+                <h3 class="section-title">¿Dónde y Cuándo?</h3>
+                <p class="section-subtitle">Detalles de las celebraciones de gala</p>
+            </div>
+
+            <div class="locations-grid">
+                <!-- Tarjeta Iglesia -->
+                <div class="location-box">
+                    <div>
+                        <span class="location-type">Ceremonia Religiosa</span>
+                        <h4 class="location-name" style="margin-top: 10px;">Parroquia del Señor de Los Milagros</h4>
+                        <div class="location-time"><i class="bi bi-clock me-1"></i> <span>17:00 hrs</span></div>
+                        <p class="location-address" style="margin-top: 8px;">
+                            Constelaciones 401, Col. Popular Anaya, C.P. 37240 León, Gto.
+                        </p>
+                    </div>
+                    <div class="location-actions" style="margin-top: 18px;">
+                        <a href="https://maps.app.goo.gl/sz6uGPwsLEBQSrg58" target="_blank" rel="noopener noreferrer"
+                            class="btn-map">
+                            <i class="bi bi-geo-alt-fill me-1"></i> Ver Ubicación en Maps
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tarjeta Salón -->
+                <div class="location-box">
+                    <div>
+                        <span class="location-type">Recepción y Fiesta</span>
+                        <h4 class="location-name" style="margin-top: 10px;">Quinta San Juan</h4>
+                        <div class="location-time"><i class="bi bi-clock me-1"></i> <span>19:00 hrs</span></div>
+                        <p class="location-address" style="margin-top: 8px;">
+                            Del Avio 113, San Jerónimo II, C.P. 37148 León, Gto.
+                        </p>
+                    </div>
+                    <div class="location-actions" style="margin-top: 18px;">
+                        <a href="https://maps.app.goo.gl/rM3Nq6uEkKoEwpLx6" target="_blank" rel="noopener noreferrer"
+                            class="btn-map">
+                            <i class="bi bi-geo-alt-fill me-1"></i> Ver Ubicación en Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ITINERARIO DEL EVENTO -->
+        <section class="section-card" id="itinerary-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+                    </svg>
+                </div>
+                <h3 class="section-title">Itinerario de la Velada</h3>
+                <p class="section-subtitle">Los momentos mágicos de nuestra noche</p>
+            </div>
+
+            <div style="text-align: center; padding: 36px 20px;">
+                <div style="font-size: 2.3rem; color: var(--color-action-cta); margin-bottom: 12px;">
+                    <i class="bi bi-clock-history"></i>
+                </div>
+                <h4
+                    style="font-family: var(--font-serif-display); font-size: 1.28rem; color: var(--color-title-contrast); margin-bottom: 8px;">
+                    Horarios por Confirmar
+                </h4>
+                <p
+                    style="font-style: italic; color: var(--color-text-muted); max-width: 440px; margin: 0 auto; font-size: 0.95rem; line-height: 1.5;">
+                    Estamos afinando cada detalle especial de la velada. Próximamente compartiremos el programa completo
+                    de la ceremonia religiosa, banquete y vals de honor.
+                </p>
+            </div>
+        </section>
+
+        <!-- CÓDIGO DE VESTIMENTA (DRESS CODE) -->
+        <section class="section-card" id="dresscode-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M12 2c1.1 0 2 .9 2 2v1.07C16.83 5.57 19 7.54 19 10v10c0 1.1-.9 2-2 2H7c-1.1 0-2-.9-2-2V10c0-2.46 2.17-4.43 5-4.93V4c0-1.1.9-2 2-2z" />
+                    </svg>
+                </div>
+                <h3 class="section-title">Código de Vestimenta</h3>
+            </div>
+
+            <div class="dresscode-box">
+                <div class="dresscode-type">Elegante</div>
+                <p class="dresscode-note">
+                    Damas: Vestido elegante · Caballeros: Traje formal.
+                </p>
+            </div>
+        </section>
+
+        <!-- MESA DE REGALOS -->
+        <section class="section-card" id="gifts-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.65-.5-.65C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 11 8.76l1-1.36 1 1.36L15.38 12 17 10.83 14.92 8H20v6z" />
+                    </svg>
+                </div>
+                <h3 class="section-title">Mesa de Regalos</h3>
+                <p class="section-subtitle">Tu presencia es mi mayor obsequio</p>
+            </div>
+
+            <div class="gifts-grid" style="grid-template-columns: 1fr; max-width: 520px; margin: 0 auto;">
+                <div class="gift-card" style="padding: 30px 24px;">
+                    <div style="font-size: 2.3rem; color: var(--color-action-cta); margin-bottom: 12px;">
+                        <i class="bi bi-gift"></i>
+                    </div>
+                    <h4 class="gift-title">Mesa de Regalos Oficial</h4>
+                    <p class="gift-text">
+                        Para nosotros tu presencia es el mejor obsequio. Si deseas tener un detalle especial con
+                        Lizette, ponemos a tu disposición nuestra mesa de regalos preparada con mucho cariño.
+                    </p>
+                    <div class="gift-registry-badge">
+                        <div class="badge-headline">
+                            <i class="bi bi-shop"></i> <span>Mesa Departamental &amp; Mesa de Obsequios</span>
+                        </div>
+                        <div class="badge-subline">
+                            <i class="bi bi-geo-alt-fill"
+                                style="color: var(--color-action-cta); font-size: 0.8rem;"></i> <span>en Recepción del Evento</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================
+             SECCIÓN DE CONFIRMACIÓN DE ASISTENCIA (RSVP)
+             ======================================================== -->
+        <section class="section-card rsvp-section" id="rsvp-section">
+            <div class="section-header">
+                <div class="section-icon" style="background: var(--color-container-sub);">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                    </svg>
+                </div>
+                <h3 class="section-title">Confirmación de Asistencia</h3>
+                <p class="section-subtitle">
+                    Agradecemos confirmar tu asistencia familiar · WhatsApp 4774097517
+                </p>
+            </div>
+
+            <form id="rsvp-form" class="rsvp-form" novalidate>
+
+                <!-- Campo: Nombre Completo o Familia -->
+                <div class="form-group" id="group-guest-name">
+                    <label for="guest-name" class="form-label" id="label-guest-name">
+                        Nombre de la Familia Invitada <span class="req">*</span>
+                    </label>
+                    <input type="text" id="guest-name" class="form-input"
+                        placeholder="Ej: Familia Esparza Morales o Familia González" required autocomplete="name">
+                </div>
+
+                <!-- Campo: Asistencia (Radio Cards) -->
+                <div class="form-group">
+                    <label class="form-label"><span>¿Nos acompañarás en esta gran noche?</span> <span class="req">*</span></label>
+                    <div class="attendance-options">
+                        <div class="attendance-card selected-yes" id="card-att-yes">
+                            <input type="radio" id="att-yes" name="attendance" value="true" checked>
+                            <div class="card-content">
+                                <div class="card-icon"><i class="bi bi-check2-circle text-emerald-600"></i></div>
+                                <div class="card-text">Sí, con gusto asistiré</div>
+                            </div>
+                        </div>
+                        <div class="attendance-card" id="card-att-no">
+                            <input type="radio" id="att-no" name="attendance" value="false">
+                            <div class="card-content">
+                                <div class="card-icon"><i class="bi bi-dash-circle text-rose-700"></i></div>
+                                <div class="card-text">No podré asistir</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campo: Pase Familiar (Número de Integrantes) -->
+                <div class="form-group" id="passes-container">
+                    <label class="form-label" id="label-passes-selector">Integrantes de la Familia (Pase
+                        Familiar)</label>
+                    <div class="passes-selector" id="passes-selector-controls">
+                        <button type="button" class="passes-btn" id="btn-passes-minus" title="Restar pase">−</button>
+                        <span class="passes-display" id="passes-count">4</span>
+                        <button type="button" class="passes-btn" id="btn-passes-plus" title="Sumar pase">+</button>
+                    </div>
+                    <small id="passes-helper-text"
+                        style="color: var(--color-text-muted); font-size: 0.8rem; margin-top: 4px; display: block;">
+                        Selecciona el número de integrantes que acudirán con este pase familiar.
+                    </small>
+                </div>
+
+                <!-- Campo: Lista Dinámica de Asistentes Individuales ("quién y quiénes son") -->
+                <div class="form-group" id="attendees-container" style="display: none;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                        <label class="form-label mb-0" id="label-attendees-title" style="margin-bottom: 0;">
+                            <i class="bi bi-person-lines-fill me-1" style="color: var(--color-action-cta);"></i>
+                            ¿Quiénes asistirán? <span class="req">*</span>
+                        </label>
+                        <span class="attendees-count-badge" id="attendees-counter-badge"
+                            style="background: rgba(214, 121, 142, 0.15); color: var(--color-title-contrast); font-size: 0.75rem; padding: 2px 10px; border-radius: 12px; font-weight: 700;">4
+                            personas</span>
+                    </div>
+                    <small
+                        style="color: var(--color-text-muted); font-size: 0.8rem; margin-bottom: 10px; display: block;">
+                        Ingresa el nombre de cada persona para su gafete de bienvenida y lugar en mesa:
+                    </small>
+                    <div id="attendees-fields-list" class="attendees-fields-list">
+                        <!-- Campos individuales generados por JS -->
+                    </div>
+                </div>
+
+
+                <!-- Campo: Mensaje / Dedicatoria -->
+                <div class="form-group">
+                    <label for="guest-message" class="form-label">Mensaje o dedicatoria para Lizette</label>
+                    <textarea id="guest-message" class="form-textarea" rows="3"
+                        placeholder="Escribe tus palabras de cariño o felicitación para la Quinceañera..."></textarea>
+                </div>
+
+                <!-- Botón de Envío -->
+                <button type="submit" class="btn-submit-rsvp" id="btn-submit-rsvp">
+                    <span>CONFIRMAR ASISTENCIA</span>
+                </button>
+            </form>
+
+            <!-- ========================================================
+                 TARJETA: ASISTENCIA REGISTRADA (BLOQUEA EL FORMULARIO TRAS CONFIRMAR)
+                 ======================================================== -->
+            <div id="rsvp-confirmed-card" class="rsvp-confirmed-card" style="display: none;">
+                <div class="confirmed-card-crest">
+                    <div class="confirmed-card-icon" id="confirmed-card-icon">
+                        <i class="bi bi-patch-check-fill"></i>
+                    </div>
+                </div>
+
+                <div id="confirmed-status-badge" class="confirmation-status-pill si">
+                    <i class="bi bi-check2-circle me-1"></i> Asistencia Confirmada
+                </div>
+
+                <h3 id="confirmed-guest-name" class="confirmed-guest-title">Familia Invitada</h3>
+                <p id="confirmed-guest-subtitle" class="confirmed-guest-subtitle">
+                    Tu respuesta ya ha sido registrada exitosamente. ¡Gracias por confirmar!
+                </p>
+
+                <!-- Resumen de pases y asistentes -->
+                <div id="confirmed-summary-box" class="confirmed-summary-box">
+                    <div class="confirmed-summary-row">
+                        <span class="confirmed-summary-label"><i class="bi bi-ticket-perforated me-1"></i> Lugares
+                            reservados:</span>
+                        <strong id="confirmed-summary-passes" class="confirmed-summary-val">1 lugar</strong>
+                    </div>
+                    <div id="confirmed-summary-attendees-row" class="confirmed-summary-row" style="margin-top: 8px;">
+                        <span class="confirmed-summary-label"><i class="bi bi-people me-1"></i> Asistentes:</span>
+                        <span id="confirmed-summary-attendees" class="confirmed-summary-val">-</span>
+                    </div>
+                </div>
+
+                <!-- Aviso institucional: sin auto-edición -->
+                <div class="confirmed-card-footer-note" style="margin-top: 14px;">
+                    <i class="bi bi-shield-check me-1" style="color: var(--color-action-cta);"></i>
+                    <span>¿Hubo algún error o requieres hacer cambios? Comunícate con los anfitriones para que
+                        actualicen tus lugares.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- PIE DE PÁGINA -->
+        <footer class="footer-section">
+            <p style="font-family: var(--font-script); font-size: 2.4rem; color: var(--color-rose-deep);">Lizette
+                Guadalupe</p>
+            <p>16 de Enero de 2026 · Gracias por ser parte de mi sueño</p>
+        </footer>
+
+    </main>
+
+    <!-- ========================================================
+         MODAL: RESULTADO DE CONFIRMACIÓN (DISEÑO EDITORIAL ROSA TUL)
+         ======================================================== -->
+    <div id="pass-modal" class="modal-overlay">
+        <div class="modal-card luxury-modal-card">
+            <button type="button" class="modal-close luxury-modal-close" id="modal-close-btn" aria-label="Cerrar"><i
+                    class="bi bi-x-lg" style="font-size: 0.82rem;"></i></button>
+
+            <!-- Emblema / Monograma de Gala -->
+            <div class="luxury-modal-crest">
+                <div class="luxury-modal-monogram" id="modal-status-icon">
+                    <i class="bi bi-heart-fill"></i>
+                </div>
+            </div>
+
+            <!-- Kicker editorial -->
+            <p class="luxury-modal-kicker">MIS XV AÑOS · LIZETTE GUADALUPE</p>
+
+            <!-- Título Principal -->
+            <h3 id="modal-status-title" class="luxury-modal-title">¡Confirmación Exitosa!</h3>
+            <p id="modal-status-subtitle" class="luxury-modal-subtitle">Tu respuesta ha sido registrada</p>
+
+            <!-- Divisor de Gala con Destello -->
+            <div class="luxury-modal-divider">
+                <span class="luxury-divider-diamond">✦</span>
+            </div>
+
+            <!-- Contenido del Invitado -->
+            <div class="luxury-modal-content">
+                <div class="luxury-guest-name" id="modal-guest-greeting">Invitado</div>
+
+                <div id="modal-status-badge" class="confirmation-status-pill si">
+                    <i class="bi bi-check2-circle me-1"></i> Asistencia Confirmada
+                </div>
+
+                <p id="modal-message-body" class="luxury-modal-message">
+                    ¡Muchas gracias por confirmar! Nos llena de emoción saber que nos acompañarás en esta gran noche de
+                    gala.
+                </p>
+
+                <!-- Resumen de Asistentes si aplica -->
+                <div id="modal-attendees-summary" class="luxury-summary-box">
+                    <div class="confirmation-summary-row">
+                        <span class="summary-label"><i class="bi bi-ticket-perforated me-1"></i> Lugares
+                            reservados:</span>
+                        <strong id="modal-summary-passes" class="summary-value">1 lugar</strong>
+                    </div>
+                    <div id="modal-summary-attendees-row" class="confirmation-summary-row" style="margin-top: 8px;">
+                        <span class="summary-label"><i class="bi bi-people me-1"></i> Integrantes:</span>
+                        <span id="modal-summary-attendees" class="summary-value">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="luxury-modal-actions">
+                <button type="button" id="btn-close-modal-action" class="btn-luxury-modal-action">
+                    Aceptar y Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================
+         DRAWER: PANEL DE ANFITRIONES (ESTADÍSTICAS Y GESTIÓN)
+         ======================================================== -->
+    <div id="admin-drawer" class="admin-drawer">
+        <div class="admin-header">
+            <div class="admin-title">
+                <i class="bi bi-shield-lock me-1"></i>
+                <span>Panel de Anfitriones · XV Lizette Guadalupe</span>
+            </div>
+            <button type="button" id="btn-close-admin"
+                style="background: transparent; border: none; color: #fff; font-size: 1.5rem; cursor: pointer;">&times;</button>
+        </div>
+
+        <div class="admin-body">
+            <!-- Métricas Principales -->
+            <div class="admin-stats-grid">
+                <div class="stat-card">
+                    <div class="stat-num" id="stat-total-pases">0</div>
+                    <div class="stat-label">Pases Confirmados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num" id="stat-confirmados-si">0</div>
+                    <div class="stat-label">Familias Asistirán</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num" id="stat-no-asisten">0</div>
+                    <div class="stat-label">No Podrán Asistir</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num" id="stat-total-registros">0</div>
+                    <div class="stat-label">Total Respuestas</div>
+                </div>
+            </div>
+
+            <!-- ========================================================
+                 SECCIÓN: GENERADOR DE INVITACIONES PERSONALIZADAS
+                 ======================================================== -->
+            <div class="admin-generator-card">
+                <div class="admin-card-header">
+                    <i class="bi bi-whatsapp me-2 text-green-600"></i>
+                    <span>Generador de Invitaciones Personalizadas (WhatsApp)</span>
+                </div>
+                <p class="admin-card-desc">
+                    Genera el enlace exclusivo para cada familia con sus pases pre-asignados y envíalo directamente con
+                    mensaje de gala por WhatsApp.
+                </p>
+                <div class="admin-generator-grid">
+                    <div class="gen-field">
+                        <label for="gen-family-name" class="gen-label">Familia o Invitado:</label>
+                        <input type="text" id="gen-family-name" class="gen-input"
+                            placeholder="Ej: Familia Morales Díaz o Tíos Sánchez">
+                    </div>
+                    <div class="gen-field gen-field-sm">
+                        <label for="gen-family-passes" class="gen-label">Pases:</label>
+                        <input type="number" id="gen-family-passes" class="gen-input text-center" value="4" min="1"
+                            max="25">
+                    </div>
+                    <div class="gen-field">
+                        <label for="gen-family-phone" class="gen-label">WhatsApp (Opcional):</label>
+                        <input type="tel" id="gen-family-phone" class="gen-input"
+                            placeholder="Ej: 524491234567 (10 dígitos)">
+                    </div>
+                </div>
+
+                <div class="admin-generator-actions">
+                    <button type="button" id="btn-generate-link" class="btn-admin btn-gen-action">
+                        <i class="bi bi-magic me-1"></i> Generar Enlace y Mensaje
+                    </button>
+                </div>
+
+                <!-- Resultado del enlace generado -->
+                <div id="gen-result-container" class="gen-result-container" style="display: none;">
+                    <div class="gen-result-info">
+                        <span class="gen-result-badge"><i class="bi bi-check-circle-fill me-1"></i> Enlace listo para
+                            compartir:</span>
+                        <div class="gen-result-url" id="gen-result-url"></div>
+                    </div>
+                    <div class="gen-buttons-row">
+                        <button type="button" id="btn-copy-gen-link" class="btn-admin btn-copy-link">
+                            <i class="bi bi-clipboard me-1"></i> Copiar Enlace
+                        </button>
+                        <button type="button" id="btn-shorten-gen-link" class="btn-admin"
+                            style="background: linear-gradient(135deg, #B86578, #9B3E54); color: #fff;">
+                            <i class="bi bi-link-45deg me-1"></i> Acortar (TinyURL)
+                        </button>
+                        <button type="button" id="btn-whatsapp-gen-link" class="btn-admin btn-whatsapp-direct">
+                            <i class="bi bi-whatsapp me-1"></i> Enviar por WhatsApp
+                        </button>
+                        <a id="btn-preview-gen-link" href="#" target="_blank" class="btn-admin btn-preview-link">
+                            <i class="bi bi-box-arrow-up-right me-1"></i> Probar Enlace
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Historial de Enlaces Recientes -->
+                <div class="gen-history-wrapper">
+                    <div class="gen-history-header">
+                        <span><i class="bi bi-clock-history me-1"></i> Invitaciones personalizadas generadas
+                            recientemente:</span>
+                        <button type="button" id="btn-clear-gen-history" class="btn-clear-history">Limpiar</button>
+                    </div>
+                    <div id="gen-history-list" class="gen-history-list">
+                        <!-- Items generados dinámicamente -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Barra de Herramientas: Búsqueda, Filtro SÍ/NO y Acciones -->
+            <div class="admin-toolbar">
+                <!-- 1. Bloque de Búsqueda Dedicado -->
+                <div class="admin-search-block">
+                    <i class="bi bi-search admin-search-icon"></i>
+                    <input type="text" id="admin-search-input" class="admin-search-field"
+                        placeholder="Buscar por nombre, código, teléfono o canción...">
+                    <button type="button" id="admin-search-clear" class="admin-search-clear-btn"
+                        title="Limpiar búsqueda" style="display: none;">&times;</button>
+                </div>
+
+                <!-- 2. Bloque de Filtro de Asistencia (SÍ y NO) -->
+                <div class="admin-attendance-filter" role="group" aria-label="Filtro de Asistencia">
+                    <button type="button" class="btn-filter-pill active" data-filter="todos" id="filter-btn-todos"
+                        title="Mostrar todas las respuestas">
+                        <i class="bi bi-people-fill me-1"></i> Todos <span class="pill-count"
+                            id="pill-count-todos">0</span>
+                    </button>
+                    <button type="button" class="btn-filter-pill pill-yes" data-filter="si" id="filter-btn-si"
+                        title="Ver solo los que confirmaron SÍ">
+                        <i class="bi bi-check-circle-fill me-1"></i> SÍ <span class="pill-count"
+                            id="pill-count-si">0</span>
+                    </button>
+                    <button type="button" class="btn-filter-pill pill-no" data-filter="no" id="filter-btn-no"
+                        title="Ver solo los que confirmaron NO">
+                        <i class="bi bi-x-circle-fill me-1"></i> NO <span class="pill-count" id="pill-count-no">0</span>
+                    </button>
+                </div>
+
+                <!-- 3. Bloque de Acciones -->
+                <div class="admin-actions-group">
+                    <button type="button" id="btn-load-demo" class="btn-admin btn-demo" title="Recargar ejemplos">
+                        <i class="bi bi-arrow-repeat me-1"></i> Datos Demo
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tabla de Confirmaciones (Tailwind Responsive Table) -->
+            <div class="admin-table-container overflow-x-auto">
+                <table class="admin-table w-full text-left">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Invitado / Familia</th>
+                            <th>Asistencia</th>
+                            <th>Pases</th>
+                            <th>Teléfono</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-table-body">
+                        <!-- Filas renderizadas dinámicamente por AdminView -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================
+         CARGA DE SCRIPTS: ARQUITECTURA MVC
+         ======================================================== -->
+
+    <!-- 1. CAPA DE MODELOS Y SERVICIOS -->
+    <script src="js/models/EventoModel.js?v=2"></script>
+    <script src="js/models/InvitadoModel.js?v=2"></script>
+    <script src="js/models/ConfirmacionDAO.js?v=2"></script>
+    <script src="js/services/PersonalizacionService.js?v=2"></script>
+
+    <!-- 2. CAPA DE VISTAS -->
+    <script src="js/views/InvitacionView.js?v=2"></script>
+    <script src="js/views/ConfirmacionView.js?v=2"></script>
+    <script src="js/views/AdminView.js?v=2"></script>
+
+    <!-- 3. CAPA DE CONTROLADORES -->
+    <script src="js/controllers/InvitacionController.js?v=2"></script>
+    <script src="js/controllers/ConfirmacionController.js?v=2"></script>
+    <script src="js/controllers/AdminController.js?v=2"></script>
+
+    <!-- 4. BOOTSTRAP / INICIALIZADOR DE LA APLICACIÓN -->
+    <script src="js/app.js?v=2"></script>
+
+</body>
+
+</html>

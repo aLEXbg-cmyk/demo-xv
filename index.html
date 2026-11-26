@@ -1,0 +1,3052 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Anfitriones VIP · XV Años Lizette Guadalupe</title>
+    
+    <!-- Fuentes Tipográficas Oficiales de Gala -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Iconografía Bootstrap Icons -->
+    <link rel="stylesheet" href="css/bootstrap-icons.min.css">
+    
+    <!-- Variables de Estilo -->
+    <link rel="stylesheet" href="css/variables.css">
+
+    <style>
+        :root {
+            --admin-bg-base: #f9f0f2;
+            --admin-wine-deep: #7A253A;
+            --admin-wine-main: #9B3E54;
+            --admin-wine-soft: #D6798E;
+            --admin-gold-rich: #C8924B;
+            --admin-gold-soft: #E0A96D;
+            --admin-gold-pale: #F8EBD8;
+            --admin-emerald: #2E7D32;
+            --admin-emerald-bg: #E8F8EE;
+            --admin-rose-bg: #FFF3F5;
+            --admin-text-main: #2D2124;
+            --admin-text-muted: #725D62;
+            --admin-card-border: rgba(224, 169, 109, 0.32);
+            --admin-card-shadow: 0 12px 34px rgba(155, 62, 84, 0.07);
+            --admin-radius: 18px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at 50% 0%, #FFF7F9 0%, #FAF0F3 45%, #F4E2E7 100%);
+            font-family: 'Plus Jakarta Sans', var(--font-sans, sans-serif);
+            color: var(--admin-text-main);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ========================================================
+           PANTALLA DE ACCESO / LOGIN VIP
+           ======================================================== */
+        .login-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 30px 20px;
+            position: relative;
+            background: radial-gradient(circle at 50% 15%, #FFF6F8 0%, #FAEDF0 50%, #F3DAE0 100%);
+            overflow: hidden;
+        }
+
+        .login-glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.55;
+            pointer-events: none;
+            z-index: 0;
+            animation: orbFloat 10s ease-in-out infinite alternate;
+        }
+
+        .login-glow-1 {
+            width: 420px;
+            height: 420px;
+            background: radial-gradient(circle, rgba(230, 145, 168, 0.55) 0%, rgba(214, 121, 142, 0) 70%);
+            top: -60px;
+            left: calc(50% - 300px);
+        }
+
+        .login-glow-2 {
+            width: 380px;
+            height: 380px;
+            background: radial-gradient(circle, rgba(224, 169, 109, 0.45) 0%, rgba(224, 169, 109, 0) 70%);
+            bottom: -40px;
+            right: calc(50% - 280px);
+            animation-duration: 12s;
+            animation-delay: -3s;
+        }
+
+        @keyframes orbFloat {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(25px) scale(1.08); }
+        }
+
+        .login-card {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1.5px solid rgba(224, 169, 109, 0.5);
+            border-radius: 26px;
+            padding: 44px 36px 36px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 25px 60px -12px rgba(155, 62, 84, 0.18),
+                        0 0 0 1px rgba(255, 255, 255, 0.9) inset,
+                        0 8px 30px rgba(224, 169, 109, 0.14);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .login-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 24px;
+            right: 24px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent 0%, #E0A96D 20%, #D6798E 50%, #E0A96D 80%, transparent 100%);
+            border-radius: 4px 4px 0 0;
+        }
+
+        .login-card.shake {
+            animation: loginShake 0.45s ease-in-out;
+        }
+
+        @keyframes loginShake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
+        }
+
+        .login-brand-wrapper {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .login-logo-glow {
+            position: absolute;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(214, 121, 142, 0.4) 0%, rgba(224, 169, 109, 0.6) 50%, rgba(224, 169, 109, 0) 70%);
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(0.95); opacity: 0.6; }
+            50% { transform: scale(1.15); opacity: 1; }
+        }
+
+        .login-logo-img {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            object-fit: contain;
+            position: relative;
+            z-index: 2;
+            border: 2.5px solid rgba(224, 169, 109, 0.7);
+            box-shadow: 0 10px 25px rgba(155, 62, 84, 0.22);
+            background: #ffffff;
+            padding: 4px;
+        }
+
+        .login-event-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #FFF1F4;
+            color: var(--admin-wine-main);
+            border: 1px solid rgba(214, 121, 142, 0.45);
+            border-radius: 50px;
+            padding: 5px 16px;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .login-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            color: var(--admin-text-main);
+            letter-spacing: 1.5px;
+            margin: 0 0 6px 0;
+            font-weight: 700;
+        }
+
+        .login-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 0 auto 12px auto;
+            width: 140px;
+        }
+
+        .login-divider::before,
+        .login-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(224, 169, 109, 0.8), transparent);
+        }
+
+        .login-divider span {
+            color: #E0A96D;
+            font-size: 0.75rem;
+        }
+
+        .login-subtitle {
+            font-size: 0.86rem;
+            color: var(--admin-text-muted);
+            margin: 0 0 24px 0;
+            line-height: 1.5;
+        }
+
+        .login-field {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .login-field label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--admin-text-main);
+            margin-bottom: 8px;
+        }
+
+        .login-input-group {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .login-input-icon {
+            position: absolute;
+            left: 15px;
+            color: var(--admin-wine-soft);
+            font-size: 1.05rem;
+            pointer-events: none;
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 13px 44px 13px 42px;
+            border: 1.5px solid rgba(224, 169, 109, 0.45);
+            border-radius: 14px;
+            font-size: 0.94rem;
+            background: #FFFDFE;
+            color: var(--admin-text-main);
+            font-family: inherit;
+            outline: none;
+            transition: all 0.25s ease;
+        }
+
+        .login-input:focus {
+            background: #ffffff;
+            border-color: var(--admin-wine-main);
+            box-shadow: 0 0 0 4px rgba(214, 121, 142, 0.2);
+        }
+
+        .login-toggle-pass {
+            position: absolute;
+            right: 12px;
+            background: transparent;
+            border: none;
+            color: #998387;
+            font-size: 1.15rem;
+            cursor: pointer;
+            padding: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: color 0.2s ease;
+        }
+
+        .login-toggle-pass:hover {
+            color: var(--admin-wine-main);
+        }
+
+        .btn-login {
+            width: 100%;
+            background: linear-gradient(135deg, #D6798E 0%, #9B3E54 50%, #7A253A 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 50px;
+            padding: 14px 24px;
+            font-size: 0.94rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(155, 62, 84, 0.28);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: inherit;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(155, 62, 84, 0.38);
+            background: linear-gradient(135deg, #E0899D 0%, #A8475E 50%, #681C2E 100%);
+        }
+
+        .login-error {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #FFEBEE;
+            color: #C62828;
+            border: 1px solid #FFCDD2;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-top: 14px;
+        }
+
+        .login-demo-helper {
+            margin-top: 24px;
+            padding-top: 18px;
+            border-top: 1px dashed rgba(224, 169, 109, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .login-key-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #FFF4F6;
+            border: 1px solid #F2C7D1;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: #71555B;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .login-key-pill:hover {
+            background: #FFE9EE;
+            border-color: var(--admin-wine-main);
+            color: #551D28;
+            transform: scale(1.02);
+        }
+
+        .login-key-pill code {
+            font-weight: 700;
+            color: var(--admin-wine-main);
+            background: #ffffff;
+            padding: 2px 8px;
+            border-radius: 6px;
+            border: 1px solid #F0C4CE;
+        }
+
+        .login-return-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--admin-wine-main);
+            text-decoration: none;
+            font-size: 0.84rem;
+            font-weight: 600;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .login-return-btn:hover {
+            color: #631828;
+            transform: translateX(-3px);
+            text-decoration: underline;
+        }
+
+        /* ========================================================
+           LAYOUT PRINCIPAL DEL DASHBOARD DE GALA
+           ======================================================== */
+        .admin-layout {
+            display: none;
+            max-width: 1260px;
+            margin: 0 auto;
+            padding: 28px 24px 70px;
+        }
+
+        /* Barra de Navegación Superior */
+        .admin-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 16px 26px;
+            border-radius: 20px;
+            border: 1.5px solid var(--admin-card-border);
+            box-shadow: var(--admin-card-shadow);
+            margin-bottom: 26px;
+            flex-wrap: wrap;
+            gap: 16px;
+            position: relative;
+        }
+
+        .admin-nav::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 20px;
+            right: 20px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent 0%, #E0A96D 20%, #D6798E 50%, #E0A96D 80%, transparent 100%);
+            border-radius: 0 0 10px 10px;
+        }
+
+        .admin-nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .admin-nav-logo {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #7A253A 0%, #9B3E54 100%);
+            color: #FAEDCD;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cinzel', serif;
+            font-size: 1.35rem;
+            font-weight: 800;
+            border: 1.5px solid rgba(224, 169, 109, 0.7);
+            box-shadow: 0 6px 16px rgba(155, 62, 84, 0.22);
+            flex-shrink: 0;
+        }
+
+        .admin-nav-info h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            margin: 0;
+            color: var(--admin-text-main);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .admin-nav-info p {
+            font-size: 0.82rem;
+            color: var(--admin-text-muted);
+            margin: 2px 0 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .admin-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-nav {
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-size: 0.86rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            outline: none;
+            font-family: inherit;
+            white-space: nowrap;
+            box-sizing: border-box;
+        }
+
+        .btn-nav-primary {
+            background: linear-gradient(135deg, #D6798E 0%, #9B3E54 100%);
+            color: #ffffff !important;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 14px rgba(155, 62, 84, 0.25);
+        }
+
+        .btn-nav-primary:hover {
+            background: linear-gradient(135deg, #DF899C 0%, #822238 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(155, 62, 84, 0.38);
+        }
+
+        .btn-logout {
+            background: #ffffff;
+            color: var(--admin-wine-main);
+            border: 1.5px solid #F0C4CC;
+            box-shadow: 0 2px 8px rgba(155, 62, 84, 0.06);
+        }
+
+        .btn-logout:hover {
+            background: #FFF4F6;
+            color: #C62828;
+            border-color: #EF9A9A;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(198, 40, 40, 0.15);
+        }
+
+        .btn-nav-pwd {
+            background: #ffffff;
+            color: var(--admin-gold-rich);
+            border: 1.5px solid rgba(200, 146, 75, 0.4);
+            box-shadow: 0 2px 8px rgba(200, 146, 75, 0.08);
+        }
+
+        .btn-nav-pwd:hover {
+            background: #FFFDF9;
+            color: #9A6623;
+            border-color: var(--admin-gold-rich);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(200, 146, 75, 0.22);
+        }
+
+        /* ========================================================
+           MODAL CAMBIAR CONTRASEÑA
+           ======================================================== */
+        .pwd-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(35, 14, 21, 0.65);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.25s ease-out;
+        }
+
+        .pwd-modal-card {
+            background: #ffffff;
+            border-radius: 24px;
+            max-width: 440px;
+            width: 100%;
+            padding: 28px 26px;
+            box-shadow: 0 24px 60px rgba(122, 37, 58, 0.35);
+            border: 1.5px solid rgba(224, 169, 109, 0.4);
+            position: relative;
+            animation: modalPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes modalPop {
+            0% { transform: scale(0.92); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .pwd-modal-header {
+            text-align: center;
+            margin-bottom: 22px;
+            position: relative;
+        }
+
+        .pwd-modal-icon {
+            width: 52px;
+            height: 52px;
+            margin: 0 auto 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FFF1E6 0%, #FEE0CA 100%);
+            border: 1.5px solid rgba(200, 146, 75, 0.45);
+            color: var(--admin-gold-rich);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.45rem;
+            box-shadow: 0 6px 18px rgba(200, 146, 75, 0.18);
+        }
+
+        .pwd-modal-header h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--admin-wine-deep);
+            margin: 0 0 4px;
+            font-weight: 700;
+        }
+
+        .pwd-modal-header p {
+            font-size: 0.84rem;
+            color: var(--admin-text-muted);
+            margin: 0;
+        }
+
+        .pwd-close-btn {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(200, 146, 75, 0.28);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 0.84rem;
+            color: #8C6A6E;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 8px rgba(155, 62, 84, 0.06);
+        }
+
+        .pwd-close-btn:hover {
+            background: #FFF2F5;
+            color: #7A253A;
+            border-color: rgba(155, 62, 84, 0.4);
+            transform: rotate(90deg) scale(1.06);
+            box-shadow: 0 4px 12px rgba(155, 62, 84, 0.16);
+        }
+
+        .pwd-field-group {
+            margin-bottom: 16px;
+        }
+
+        .pwd-field-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--admin-text-main);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pwd-input-wrap {
+            position: relative;
+        }
+
+        .pwd-input-wrap input {
+            width: 100%;
+            padding: 11px 16px;
+            border-radius: 12px;
+            border: 1.5px solid #EAD8DC;
+            font-size: 0.92rem;
+            color: var(--admin-text-main);
+            background: #FFFDFE;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .pwd-input-wrap input:focus {
+            outline: none;
+            border-color: var(--admin-wine-main);
+            box-shadow: 0 0 0 3px rgba(155, 62, 84, 0.12);
+            background: #ffffff;
+        }
+
+        .pwd-feedback {
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pwd-feedback.error {
+            background: #FFEBEE;
+            color: #C62828;
+            border: 1px solid #FFCDD2;
+        }
+
+        .pwd-feedback.success {
+            background: #E8F8EE;
+            color: #2E7D32;
+            border: 1px solid #C8E6C9;
+        }
+
+        .pwd-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .btn-pwd-cancel {
+            flex: 1;
+            padding: 11px;
+            background: #FFF3F5;
+            color: var(--admin-wine-main);
+            border: 1px solid #F0C4CC;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .btn-pwd-cancel:hover {
+            background: #FFE2E7;
+        }
+
+        .btn-pwd-save {
+            flex: 1.5;
+            padding: 11px;
+            background: linear-gradient(135deg, #D6798E 0%, #9B3E54 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.88rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 6px 18px rgba(155, 62, 84, 0.25);
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .btn-pwd-save:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(155, 62, 84, 0.35);
+        }
+
+        .pwd-reset-hint {
+            margin-top: 18px;
+            padding-top: 14px;
+            border-top: 1px dashed rgba(224, 169, 109, 0.35);
+            text-align: center;
+        }
+
+        .btn-link-restore {
+            background: none;
+            border: none;
+            color: var(--admin-text-muted);
+            font-size: 0.78rem;
+            cursor: pointer;
+            text-decoration: underline;
+            padding: 4px;
+            transition: color 0.2s ease;
+            font-family: inherit;
+        }
+
+        .btn-link-restore:hover {
+            color: var(--admin-wine-deep);
+        }
+
+        /* ========================================================
+           TARJETAS DE MÉTRICAS KPI (STATS)
+           ======================================================== */
+        .admin-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1.5px solid var(--admin-card-border);
+            border-radius: var(--admin-radius);
+            padding: 22px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: var(--admin-card-shadow);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 36px rgba(155, 62, 84, 0.13);
+            border-color: rgba(214, 121, 142, 0.55);
+        }
+
+        .stat-icon-circle {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-icon-pases {
+            background: linear-gradient(135deg, #FDE8EB, #F7C8D0);
+            color: var(--admin-wine-main);
+            border: 1px solid #F0B8C4;
+        }
+
+        .stat-icon-si {
+            background: linear-gradient(135deg, #E8F8EE, #C8E6C9);
+            color: #2E7D32;
+            border: 1px solid #A5D6A7;
+        }
+
+        .stat-icon-no {
+            background: linear-gradient(135deg, #FFEBEE, #FFCDD2);
+            color: #C62828;
+            border: 1px solid #EF9A9A;
+        }
+
+        .stat-icon-total {
+            background: linear-gradient(135deg, #F3E5F5, #E1BEE7);
+            color: #6A1B9A;
+            border: 1px solid #CE93D8;
+        }
+
+        .stat-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-num {
+            font-family: 'Cinzel', serif;
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: var(--admin-text-main);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: var(--admin-text-muted);
+        }
+
+        /* ========================================================
+           SECCIÓN 1: GENERADOR DE INVITACIONES PERSONALIZADAS
+           ======================================================== */
+        .admin-generator-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1.5px solid var(--admin-card-border);
+            border-radius: 22px;
+            box-shadow: var(--admin-card-shadow);
+            padding: 28px 30px;
+            margin-bottom: 28px;
+            position: relative;
+        }
+
+        .gen-card-header-styled {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 22px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(224, 169, 109, 0.25);
+        }
+
+        .gen-header-icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: #E8F8EE;
+            color: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            border: 1px solid #C8E6C9;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.18);
+        }
+
+        .gen-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.35rem;
+            color: var(--admin-text-main);
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+        }
+
+        .gen-desc {
+            font-size: 0.84rem;
+            color: var(--admin-text-muted);
+            margin: 3px 0 0;
+        }
+
+        .admin-generator-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 2.2fr 1fr 1.5fr;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        .gen-field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gen-label {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--admin-text-main);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .gen-input {
+            border-radius: 12px;
+            border: 1.5px solid #F0C4CC;
+            background: #FFFDFE;
+            padding: 12px 14px;
+            font-size: 0.92rem;
+            color: var(--admin-text-main);
+            transition: all 0.2s ease;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .gen-input:focus {
+            background: #ffffff;
+            border-color: var(--admin-wine-soft);
+            box-shadow: 0 0 0 3px rgba(214, 121, 142, 0.22);
+        }
+
+        .gen-select {
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* Bloque de Desbloqueo / Reset */
+        .gen-reset-box {
+            grid-column: 1 / -1;
+            margin-top: 4px;
+            padding: 12px 18px;
+            background: rgba(255, 244, 230, 0.7);
+            border-radius: 14px;
+            border: 1.5px dashed rgba(224, 169, 109, 0.7);
+            transition: background 0.2s ease;
+        }
+
+        .gen-reset-box:hover {
+            background: rgba(255, 244, 230, 0.95);
+        }
+
+        .gen-reset-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            cursor: pointer;
+            margin: 0;
+            font-size: 0.88rem;
+            color: #3A2E31;
+        }
+
+        .gen-reset-checkbox {
+            width: 19px;
+            height: 19px;
+            accent-color: var(--admin-wine-main);
+            cursor: pointer;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .admin-generator-actions {
+            margin-top: 8px;
+            margin-bottom: 20px;
+        }
+
+        .btn-gen-action {
+            width: 100%;
+            background: linear-gradient(135deg, #D6798E 0%, #9B3E54 50%, #7A253A 100%);
+            border-radius: 50px;
+            padding: 15px 28px;
+            font-size: 0.98rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            box-shadow: 0 6px 20px rgba(155, 62, 84, 0.28);
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.25s ease;
+            font-family: inherit;
+        }
+
+        .btn-gen-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(155, 62, 84, 0.4);
+            background: linear-gradient(135deg, #E0899D 0%, #A8475E 50%, #681C2E 100%);
+        }
+
+        /* Contenedor del Resultado Generado */
+        .gen-result-container {
+            background: linear-gradient(135deg, #FFF6F8 0%, #FFFDFE 100%);
+            border: 1.5px solid rgba(224, 169, 109, 0.6);
+            border-radius: 16px;
+            padding: 18px 22px;
+            margin-bottom: 24px;
+            box-shadow: 0 6px 20px rgba(155, 62, 84, 0.08);
+            animation: fadeInResult 0.35s ease-out;
+        }
+
+        @keyframes fadeInResult {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .gen-result-info {
+            margin-bottom: 14px;
+        }
+
+        .gen-result-badge {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #2E7D32;
+            background: #E8F8EE;
+            border: 1px solid #C8E6C9;
+            padding: 3px 12px;
+            border-radius: 30px;
+            margin-bottom: 8px;
+        }
+
+        .gen-result-url {
+            font-family: monospace;
+            font-size: 0.94rem;
+            font-weight: 700;
+            color: var(--admin-wine-deep);
+            background: #ffffff;
+            border: 1px solid #F0C4CC;
+            padding: 10px 14px;
+            border-radius: 10px;
+            word-break: break-all;
+            user-select: all;
+        }
+
+        .gen-buttons-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-admin {
+            padding: 10px 18px;
+            border-radius: 50px;
+            font-size: 0.84rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            font-family: inherit;
+        }
+
+        .btn-copy-link {
+            background: #ffffff;
+            color: var(--admin-text-main);
+            border: 1.5px solid #F0C4CC;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+        }
+
+        .btn-copy-link:hover {
+            background: #FFF4F6;
+            border-color: var(--admin-wine-soft);
+            color: var(--admin-wine-main);
+            transform: translateY(-1px);
+        }
+
+        .btn-whatsapp-direct {
+            background: #25D366;
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
+        }
+
+        .btn-whatsapp-direct:hover {
+            background: #20BD5A;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+        }
+
+        .btn-preview-link {
+            background: #ffffff;
+            color: var(--admin-wine-main);
+            border: 1.5px solid #F0C4CC;
+        }
+
+        .btn-preview-link:hover {
+            background: #FFF4F6;
+            border-color: var(--admin-wine-main);
+            transform: translateY(-1px);
+        }
+
+        /* Historial de Enlaces */
+        .gen-history-wrapper {
+            margin-top: 10px;
+            padding-top: 18px;
+            border-top: 1px dashed rgba(224, 169, 109, 0.35);
+        }
+
+        .gen-history-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--admin-text-muted);
+            margin-bottom: 12px;
+        }
+
+        .btn-clear-history {
+            background: #FFF1F3;
+            border: 1.5px solid #F5CCD4;
+            color: #C62828;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 6px 14px;
+            border-radius: 50px;
+            transition: all 0.22s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            box-shadow: 0 2px 6px rgba(198, 40, 40, 0.06);
+            font-family: inherit;
+        }
+
+        .btn-clear-history:hover {
+            background: linear-gradient(135deg, #EF5350, #C62828);
+            color: #ffffff;
+            border-color: #C62828;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(198, 40, 40, 0.25);
+            text-decoration: none;
+        }
+
+        .gen-history-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-height: 280px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .gen-history-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #FFFDFE;
+            border: 1px solid #F2D5DC;
+            border-radius: 12px;
+            padding: 10px 14px;
+            transition: all 0.2s ease;
+        }
+
+        .gen-history-item:hover {
+            background: #ffffff;
+            border-color: var(--admin-wine-soft);
+            box-shadow: 0 4px 12px rgba(155, 62, 84, 0.06);
+        }
+
+        .gen-item-info {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .gen-item-name {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--admin-text-main);
+        }
+
+        .gen-item-meta {
+            font-size: 0.76rem;
+            color: var(--admin-text-muted);
+        }
+
+        .gen-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-item-action {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+            border: none;
+            outline: none;
+        }
+
+        /* 1. Botón Copiar */
+        .btn-item-action.btn-item-copy {
+            background: #FFF1F4;
+            color: var(--admin-wine-main);
+            border: 1.5px solid #F5CCD4;
+        }
+
+        .btn-item-action.btn-item-copy:hover {
+            background: linear-gradient(135deg, #D6798E, #9B3E54);
+            color: #ffffff;
+            border-color: #9B3E54;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(155, 62, 84, 0.3);
+        }
+
+        /* 2. Botón WhatsApp */
+        .btn-item-action.btn-item-wa {
+            background: #E8F8EE;
+            color: #1EA952;
+            border: 1.5px solid #C8E6C9;
+        }
+
+        .btn-item-action.btn-item-wa:hover {
+            background: linear-gradient(135deg, #2ED871, #20BD5A);
+            color: #ffffff;
+            border-color: #20BD5A;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.38);
+        }
+
+        /* 3. Botón Abrir / Probar */
+        .btn-item-action.btn-item-open {
+            background: #FFF8EB;
+            color: #B57A38;
+            border: 1.5px solid #F8DFBA;
+        }
+
+        .btn-item-action.btn-item-open:hover {
+            background: linear-gradient(135deg, #E0A96D, #C8924B);
+            color: #ffffff;
+            border-color: #C8924B;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(200, 146, 75, 0.35);
+        }
+
+        /* 4. Botón Eliminar */
+        .btn-item-action.btn-item-del {
+            background: #FFEBEE;
+            color: #C62828;
+            border: 1.5px solid #FFCDD2;
+        }
+
+        .btn-item-action.btn-item-del:hover {
+            background: linear-gradient(135deg, #EF5350, #C62828);
+            color: #ffffff;
+            border-color: #C62828;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(198, 40, 40, 0.35);
+        }
+
+        .btn-item-action:active {
+            transform: translateY(0) scale(0.96);
+        }
+
+        /* ========================================================
+           PESTAÑAS DEL GENERADOR (MANUAL VS EXCEL)
+           ======================================================== */
+        .gen-mode-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 22px;
+            border-bottom: 1.5px solid rgba(224, 169, 109, 0.28);
+            padding-bottom: 14px;
+            flex-wrap: wrap;
+        }
+
+        .gen-tab-btn {
+            background: #FFFDFC;
+            border: 1.5px solid #F0C4CC;
+            border-radius: 14px;
+            padding: 10px 20px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--admin-text-muted);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.22s ease;
+            font-family: inherit;
+        }
+
+        .gen-tab-btn:hover {
+            background: #FFF3F5;
+            color: var(--admin-wine-main);
+            border-color: var(--admin-wine-soft);
+            transform: translateY(-1px);
+        }
+
+        .gen-tab-btn.active {
+            background: linear-gradient(135deg, var(--admin-wine-main) 0%, var(--admin-wine-deep) 100%);
+            color: #ffffff;
+            border-color: var(--admin-wine-deep);
+            box-shadow: 0 4px 14px rgba(155, 62, 84, 0.28);
+        }
+
+        .gen-tab-badge {
+            background: #E8F8EE;
+            color: #107C41;
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 10px;
+            border: 1px solid #C8E6C9;
+            letter-spacing: 0.3px;
+        }
+
+        .gen-tab-btn.active .gen-tab-badge {
+            background: rgba(255, 255, 255, 0.22);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* ========================================================
+           SECCIÓN DE CARGA MASIVA CON EXCEL
+           ======================================================== */
+        .excel-upload-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            animation: fadeInPanel 0.3s ease;
+        }
+
+        @keyframes fadeInPanel {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .excel-steps-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        @media (max-width: 820px) {
+            .excel-steps-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .excel-step-card {
+            background: #FFFBF9;
+            border: 1.5px solid rgba(224, 169, 109, 0.38);
+            border-radius: 18px;
+            padding: 20px 22px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .excel-step-title {
+            font-size: 0.96rem;
+            font-weight: 700;
+            color: var(--admin-wine-deep);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .excel-step-title .badge-step {
+            background: linear-gradient(135deg, var(--admin-gold-soft), var(--admin-gold-rich));
+            color: #ffffff;
+            font-size: 0.72rem;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+        }
+
+        .excel-step-desc {
+            font-size: 0.83rem;
+            color: var(--admin-text-muted);
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .excel-step-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-download-tpl {
+            background: linear-gradient(135deg, #107C41 0%, #0B5C30 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            padding: 10px 18px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(16, 124, 65, 0.25);
+            transition: all 0.2s ease;
+            text-decoration: none;
+            font-family: inherit;
+        }
+
+        .btn-download-tpl:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(16, 124, 65, 0.35);
+            color: #ffffff;
+        }
+
+        .btn-download-tpl-secondary {
+            background: #ffffff;
+            color: #107C41;
+            border: 1.5px solid #107C41;
+            border-radius: 12px;
+            padding: 10px 14px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            font-family: inherit;
+        }
+
+        .btn-download-tpl-secondary:hover {
+            background: #E8F8EE;
+        }
+
+        /* Dropzone para subir Excel */
+        .excel-dropzone {
+            border: 2px dashed #D6798E;
+            border-radius: 18px;
+            background: #FFFDFE;
+            padding: 26px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.22s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .excel-dropzone:hover, .excel-dropzone.dragover {
+            border-color: var(--admin-wine-main);
+            background: #FFF0F3;
+            transform: scale(1.01);
+            box-shadow: 0 6px 20px rgba(155, 62, 84, 0.12);
+        }
+
+        .excel-dropzone-icon {
+            font-size: 2.4rem;
+            color: #107C41;
+            margin-bottom: 8px;
+            transition: transform 0.2s ease;
+        }
+
+        .excel-dropzone:hover .excel-dropzone-icon {
+            transform: translateY(-3px) scale(1.08);
+        }
+
+        .excel-dropzone-text {
+            font-size: 0.94rem;
+            font-weight: 700;
+            color: var(--admin-text-main);
+            margin-bottom: 4px;
+        }
+
+        .excel-dropzone-subtext {
+            font-size: 0.78rem;
+            color: var(--admin-text-muted);
+        }
+
+        /* Vista previa del Excel cargado */
+        .excel-preview-box {
+            background: #ffffff;
+            border: 1.5px solid rgba(224, 169, 109, 0.45);
+            border-radius: 18px;
+            padding: 20px 22px;
+            box-shadow: 0 4px 18px rgba(155, 62, 84, 0.05);
+        }
+
+        .excel-preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .excel-preview-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--admin-text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .excel-count-badge {
+            background: #E8F8EE;
+            color: #107C41;
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 12px;
+            border: 1px solid #C8E6C9;
+        }
+
+        .excel-preview-table-wrap {
+            max-height: 250px;
+            overflow-y: auto;
+            border: 1.5px solid #F0C4CC;
+            border-radius: 12px;
+            margin-bottom: 18px;
+            background: #FFFDFE;
+        }
+
+        .excel-preview-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.84rem;
+        }
+
+        .excel-preview-table th {
+            background: #FFF0F3;
+            color: var(--admin-wine-deep);
+            font-weight: 700;
+            padding: 10px 14px;
+            text-align: left;
+            position: sticky;
+            top: 0;
+            border-bottom: 1.5px solid #F0C4CC;
+            z-index: 1;
+        }
+
+        .excel-preview-table td {
+            padding: 8px 14px;
+            border-bottom: 1px solid #FCEEF1;
+            color: var(--admin-text-main);
+        }
+
+        .excel-preview-table tr:hover {
+            background: #FFF7F9;
+        }
+
+        .excel-action-bar {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .btn-process-excel {
+            background: linear-gradient(135deg, var(--admin-wine-main) 0%, var(--admin-wine-deep) 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 26px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 14px rgba(155, 62, 84, 0.28);
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .btn-process-excel:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(155, 62, 84, 0.38);
+        }
+
+        .btn-export-excel-links {
+            background: linear-gradient(135deg, #107C41 0%, #0B5C30 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 24px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 14px rgba(16, 124, 65, 0.25);
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .btn-export-excel-links:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(16, 124, 65, 0.35);
+        }
+
+        .btn-clear-excel {
+            background: transparent;
+            border: 1px solid #F0C4CC;
+            color: var(--admin-text-muted);
+            border-radius: 50px;
+            padding: 10px 18px;
+            font-size: 0.84rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .btn-clear-excel:hover {
+            background: #FFF0F3;
+            color: var(--admin-wine-main);
+        }
+
+        .excel-success-alert {
+            background: #E8F8EE;
+            border: 1.5px solid #A5D6A7;
+            color: #1B5E20;
+            padding: 14px 18px;
+            border-radius: 14px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        /* ========================================================
+           SECCIÓN 2: TABLA DE RESPUESTAS & CONTROL EN VIVO
+           ======================================================== */
+        .section-responses-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1.5px solid var(--admin-card-border);
+            border-radius: 22px;
+            box-shadow: var(--admin-card-shadow);
+            padding: 28px 30px;
+        }
+
+        .panel-card-topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .title-with-pill {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .title-icon-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(214, 121, 142, 0.25), rgba(155, 62, 84, 0.15));
+            color: var(--admin-wine-deep);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            border: 1px solid rgba(214, 121, 142, 0.4);
+            box-shadow: 0 4px 12px rgba(155, 62, 84, 0.1);
+        }
+
+        .panel-card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.35rem;
+            color: var(--admin-text-main);
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+        }
+
+        .panel-card-subtitle {
+            font-size: 0.84rem;
+            color: var(--admin-text-muted);
+            margin: 3px 0 0;
+        }
+
+        .live-status-chip {
+            background: #E8F8EE;
+            color: #2E7D32;
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #C8E6C9;
+            box-shadow: 0 2px 8px rgba(46, 125, 50, 0.1);
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #2E7D32;
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.25);
+            animation: pulseDot 2s infinite;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
+        }
+
+        /* Barra de Herramientas: Buscador & Filtros */
+        .admin-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 22px;
+            flex-wrap: wrap;
+        }
+
+        .admin-search-block {
+            position: relative;
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .admin-search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--admin-wine-soft);
+            font-size: 0.95rem;
+            pointer-events: none;
+        }
+
+        .admin-search-field {
+            width: 100%;
+            border-radius: 50px;
+            padding: 11px 40px 11px 44px;
+            border: 1.5px solid #F0C4CC;
+            background: #FFFDFE;
+            font-size: 0.9rem;
+            color: var(--admin-text-main);
+            outline: none;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .admin-search-field:focus {
+            background: #ffffff;
+            border-color: var(--admin-wine-soft);
+            box-shadow: 0 0 0 3px rgba(214, 121, 142, 0.2);
+        }
+
+        .admin-search-clear-btn {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #FFF0F3;
+            border: none;
+            color: var(--admin-wine-main);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .admin-search-clear-btn:hover {
+            background: #FFE0E6;
+        }
+
+        .admin-attendance-filter {
+            background: #FFF3F5;
+            padding: 4px;
+            border-radius: 50px;
+            border: 1.5px solid #F5CCD4;
+            display: flex;
+            gap: 4px;
+        }
+
+        .btn-filter-pill {
+            border-radius: 50px;
+            padding: 8px 18px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            background: transparent;
+            border: none;
+            color: var(--admin-text-muted);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .btn-filter-pill:hover {
+            color: var(--admin-text-main);
+        }
+
+        .btn-filter-pill.active {
+            background: linear-gradient(135deg, #D6798E, #9B3E54);
+            color: #ffffff;
+            box-shadow: 0 3px 10px rgba(155, 62, 84, 0.25);
+        }
+
+        .btn-filter-pill.pill-yes.active {
+            background: linear-gradient(135deg, #43A047, #2E7D32);
+            color: #ffffff;
+            box-shadow: 0 3px 10px rgba(46, 125, 50, 0.3);
+        }
+
+        .btn-filter-pill.pill-no.active {
+            background: linear-gradient(135deg, #E53935, #C62828);
+            color: #ffffff;
+            box-shadow: 0 3px 10px rgba(198, 40, 40, 0.3);
+        }
+
+        .pill-count {
+            background: rgba(0, 0, 0, 0.08);
+            font-size: 0.72rem;
+            padding: 2px 7px;
+            border-radius: 10px;
+            font-weight: 700;
+        }
+
+        .btn-filter-pill.active .pill-count {
+            background: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+        }
+
+        .btn-demo {
+            border-radius: 50px;
+            background: #ffffff;
+            color: var(--admin-text-main);
+            border: 1.5px solid #F0C4CC;
+            padding: 9px 18px;
+            font-weight: 600;
+            box-shadow: 0 2px 6px rgba(155, 62, 84, 0.06);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .btn-demo:hover {
+            background: #FFF4F6;
+            border-color: var(--admin-wine-soft);
+            transform: translateY(-1px);
+        }
+
+        /* Tabla de Invitados de Gala */
+        .admin-table-container {
+            border-radius: 16px;
+            border: 1.5px solid #F3D2D9;
+            background: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            overflow-x: auto;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            text-align: left;
+        }
+
+        .admin-table th {
+            background: linear-gradient(90deg, #FDF4F6 0%, #FFF8F9 100%);
+            color: #8C3549;
+            font-size: 0.76rem;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 15px 18px;
+            border-bottom: 2px solid #F0C4CC;
+            white-space: nowrap;
+        }
+
+        .admin-table td {
+            padding: 15px 18px;
+            border-bottom: 1px solid #FAF0F2;
+            vertical-align: middle;
+            font-size: 0.9rem;
+        }
+
+        .admin-table tr:hover td {
+            background: #FFF8F9;
+        }
+
+        .admin-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .guest-name-cell {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .guest-avatar-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #FDE8EB;
+            color: var(--admin-wine-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+            border: 1px solid #F7C8D0;
+        }
+
+        .guest-avatar-icon.avatar-amigo {
+            background: #FFF0F5;
+            color: #C2185B;
+            border-color: #F8BBD0;
+        }
+
+        .guest-name-info-block {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .guest-name-text {
+            font-weight: 700;
+            color: var(--admin-text-main);
+            font-size: 0.94rem;
+        }
+
+        .badge-type-pill {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 2px 8px;
+            border-radius: 12px;
+        }
+
+        .badge-type-pill.familia {
+            background: #E8F4FD;
+            color: #1976D2;
+            border: 1px solid #BBDEFB;
+        }
+
+        .badge-type-pill.amigo {
+            background: #FFF0F5;
+            color: #C2185B;
+            border: 1px solid #F8BBD0;
+        }
+
+        .table-attendees-box {
+            margin-top: 4px;
+            font-size: 0.78rem;
+            color: #555;
+            background: #FFF9FA;
+            border: 1px dashed #EAC0C8;
+            padding: 4px 10px;
+            border-radius: 8px;
+            display: inline-block;
+            max-width: 380px;
+            line-height: 1.35;
+        }
+
+        .table-attendees-title {
+            font-weight: 700;
+            color: #8C2C43;
+            margin-right: 4px;
+        }
+
+        .status-badge-yes {
+            background: #E8F8EE;
+            color: #1B5E20;
+            border: 1px solid #C8E6C9;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 6px rgba(46, 125, 50, 0.08);
+            white-space: nowrap;
+        }
+
+        .status-badge-no {
+            background: #FFEBEE;
+            color: #C62828;
+            border: 1px solid #FFCDD2;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .badge-passes-pill {
+            background: #FDF4F6;
+            color: var(--admin-text-main);
+            border: 1.5px solid #F0C4CC;
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.82rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 1px 3px rgba(155, 62, 84, 0.05);
+            white-space: nowrap;
+        }
+
+        .badge-passes-pill i {
+            color: var(--admin-wine-soft);
+        }
+
+        .badge-passes-none {
+            color: #aaa;
+            font-size: 0.82rem;
+            font-weight: 500;
+            padding-left: 6px;
+        }
+
+        .phone-action-badge {
+            background: #ffffff;
+            border: 1px solid #E5D5D8;
+            padding: 6px 14px;
+            border-radius: 30px;
+            color: var(--admin-text-main);
+            font-size: 0.84rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+            white-space: nowrap;
+        }
+
+        .phone-action-badge i {
+            color: #25D366;
+            font-size: 0.96rem;
+        }
+
+        .phone-action-badge:hover {
+            background: #E8F8EE;
+            border-color: #25D366;
+            color: #1B5E20;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 8px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-delete-row {
+            background: #ffffff;
+            border: 1.5px solid #FFCDD2;
+            color: #C62828;
+            padding: 6px 14px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 4px rgba(198, 40, 40, 0.05);
+            font-family: inherit;
+        }
+
+        .btn-delete-row:hover {
+            background: #FFEBEE;
+            border-color: #EF5350;
+            color: #B71C1C;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 8px rgba(198, 40, 40, 0.18);
+        }
+
+        .history-type-badge {
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 10px;
+        }
+
+        .history-type-badge.familia {
+            background: #E3F2FD;
+            color: #1565C0;
+        }
+
+        .history-type-badge.amigo {
+            background: #FCE4EC;
+            color: #AD1457;
+        }
+
+        /* ========================================================
+           SECCIÓN DE PALABRAS BONITAS & DEDICATORIAS
+           ======================================================== */
+        .admin-messages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 18px;
+            margin-top: 10px;
+        }
+
+        .message-card-item {
+            background: linear-gradient(135deg, #FFFDFE 0%, #FFF8FA 100%);
+            border: 1.5px solid rgba(224, 169, 109, 0.45);
+            border-radius: 18px;
+            padding: 22px 24px;
+            box-shadow: 0 4px 16px rgba(155, 62, 84, 0.06);
+            transition: all 0.25s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .message-card-item:hover {
+            transform: translateY(-3px);
+            border-color: var(--admin-wine-soft);
+            box-shadow: 0 10px 25px rgba(155, 62, 84, 0.12);
+        }
+
+        .message-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed rgba(214, 121, 142, 0.35);
+        }
+
+        .message-sender-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .message-sender-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #FDE8EB;
+            color: var(--admin-wine-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            flex-shrink: 0;
+            border: 1px solid #F7C8D0;
+        }
+
+        .message-sender-avatar.amigo {
+            background: #FFF0F5;
+            color: #C2185B;
+            border-color: #F8BBD0;
+        }
+
+        .message-sender-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .message-sender-name {
+            font-family: 'Cinzel', serif;
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: var(--admin-text-main);
+        }
+
+        .message-date {
+            font-size: 0.74rem;
+            color: var(--admin-text-muted);
+        }
+
+        .message-card-body {
+            position: relative;
+            padding: 4px 0 0;
+        }
+
+        .quote-icon {
+            font-size: 1.4rem;
+            color: rgba(214, 121, 142, 0.45);
+            line-height: 1;
+            display: inline-block;
+            margin-bottom: 6px;
+        }
+
+        .message-card-text {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: #3F2C31;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .empty-messages-box {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 42px 20px;
+            background: #FFF9FA;
+            border: 1.5px dashed rgba(214, 121, 142, 0.4);
+            border-radius: 18px;
+        }
+
+        /* ========================================================
+           RESPONSIVIDAD MÓVIL Y TABLET
+           ======================================================== */
+        @media (max-width: 960px) {
+            .admin-stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .admin-generator-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .admin-layout {
+                padding: 16px 12px 50px;
+            }
+
+            .admin-nav {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 16px;
+            }
+
+            .admin-nav-brand {
+                justify-content: center;
+            }
+
+            .admin-nav-links {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                justify-content: center;
+            }
+
+            .btn-nav {
+                flex: 1 1 auto;
+                justify-content: center;
+                padding: 10px 14px;
+                font-size: 0.8rem;
+                white-space: nowrap;
+            }
+
+            .admin-stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+
+            .stat-card {
+                padding: 14px 12px;
+                gap: 10px;
+            }
+
+            .stat-icon-circle {
+                width: 42px;
+                height: 42px;
+                font-size: 1.25rem;
+                border-radius: 12px;
+            }
+
+            .stat-num {
+                font-size: 1.6rem;
+            }
+
+            .stat-label {
+                font-size: 0.68rem;
+            }
+
+            .admin-generator-card,
+            .section-responses-card {
+                padding: 18px 14px;
+            }
+
+            .admin-generator-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .gen-buttons-row {
+                flex-direction: column;
+            }
+
+            .gen-buttons-row .btn-admin {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .admin-toolbar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .admin-attendance-filter {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .btn-filter-pill {
+                flex: 1;
+                justify-content: center;
+                padding: 8px 4px;
+                font-size: 0.76rem;
+            }
+
+            .btn-demo {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .gen-history-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .gen-item-actions {
+                width: 100%;
+                justify-content: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================================
+         VISTA 1: PANTALLA DE ACCESO / LOGIN DEL ADMINISTRADOR
+         ======================================================== -->
+    <div id="login-section" class="login-wrapper">
+        <div class="login-glow-orb login-glow-1"></div>
+        <div class="login-glow-orb login-glow-2"></div>
+
+        <div class="login-card" id="login-card-box">
+            <!-- Emblema de Gala con Logo Minimalista Oficial -->
+            <div class="login-brand-wrapper">
+                <div class="login-logo-glow"></div>
+                <img src="assets/logo_xv_minimalista.png" alt="Emblema XV Años Lizette" class="login-logo-img">
+            </div>
+
+            <!-- Título y Evento -->
+            <div>
+                <div class="login-event-pill">
+                    <i class="bi bi-stars"></i> MIS XV AÑOS · LIZETTE GUADALUPE
+                </div>
+            </div>
+            <h2 class="login-title">Panel de Anfitriones</h2>
+            <div class="login-divider"><span>✦</span></div>
+            <p class="login-subtitle">
+                Área de acceso exclusivo para la gestión de pases y control de confirmaciones en tiempo real.
+            </p>
+
+            <form id="admin-login-form">
+                <div class="login-field">
+                    <label for="admin-pass">
+                        <i class="bi bi-shield-lock-fill" style="color: var(--admin-wine-main);"></i> Contraseña de Administrador:
+                    </label>
+                    <div class="login-input-group">
+                        <i class="bi bi-key-fill login-input-icon"></i>
+                        <input type="password" id="admin-pass" class="login-input" placeholder="Ingresa la clave de acceso..." autocomplete="current-password" autofocus required>
+                        <button type="button" class="login-toggle-pass" id="btn-toggle-pass" title="Ver / Ocultar contraseña">
+                            <i class="bi bi-eye" id="toggle-eye-icon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-login">
+                    <i class="bi bi-door-open-fill"></i> Entrar al Panel Oficial
+                </button>
+
+                <div id="login-error-msg" class="login-error">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                    <span>Contraseña incorrecta. Inténtalo de nuevo.</span>
+                </div>
+            </form>
+
+            <div class="login-demo-helper">
+                <a href="invitacion.html" class="login-return-btn">
+                    <i class="bi bi-eye"></i> Ver Invitación
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================
+         VISTA 2: DASHBOARD COMPLETO DEL ADMINISTRADOR
+         ======================================================== -->
+    <div id="admin-dashboard-section" class="admin-layout">
+        
+        <!-- Barra de Navegación Superior -->
+        <header class="admin-nav">
+            <div class="admin-nav-brand">
+                <div class="admin-nav-logo">LG</div>
+                <div class="admin-nav-info">
+                    <h1>
+                        Panel de Anfitriones
+                        <span style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.72rem; font-weight: 700; background: #FFF0F3; color: var(--admin-wine-main); border: 1px solid #F0C4CC; padding: 2px 10px; border-radius: 12px; letter-spacing: 0.5px;">GALA VIP</span>
+                    </h1>
+                    <p>
+                        <i class="bi bi-calendar-heart me-1" style="color: var(--admin-gold-rich);"></i>
+                        16 de Enero de 2026 · Lizette Guadalupe
+                    </p>
+                </div>
+            </div>
+            <div class="admin-nav-links">
+                <a href="invitacion.html" target="_blank" class="btn-nav btn-nav-primary">
+                    <i class="bi bi-eye"></i> Ver Invitación
+                </a>
+                <button type="button" id="btn-open-pwd-modal" class="btn-nav btn-nav-pwd">
+                    <i class="bi bi-shield-lock-fill"></i> Cambiar Contraseña
+                </button>
+                <button type="button" id="btn-logout" class="btn-nav btn-logout">
+                    <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+                </button>
+            </div>
+        </header>
+
+        <!-- Tarjetas de Métricas Principales (Stats) -->
+        <div class="admin-stats-grid">
+            <div class="stat-card stat-card-pases">
+                <div class="stat-icon-circle stat-icon-pases">
+                    <i class="bi bi-ticket-perforated-fill"></i>
+                </div>
+                <div class="stat-info">
+                    <div class="stat-num" id="stat-total-pases">0</div>
+                    <div class="stat-label">Pases Confirmados</div>
+                </div>
+            </div>
+            <div class="stat-card stat-card-si">
+                <div class="stat-icon-circle stat-icon-si">
+                    <i class="bi bi-people-fill"></i>
+                </div>
+                <div class="stat-info">
+                    <div class="stat-num" id="stat-confirmados-si">0</div>
+                    <div class="stat-label">Familias Asistirán</div>
+                </div>
+            </div>
+            <div class="stat-card stat-card-no">
+                <div class="stat-icon-circle stat-icon-no">
+                    <i class="bi bi-person-x-fill"></i>
+                </div>
+                <div class="stat-info">
+                    <div class="stat-num" id="stat-no-asisten">0</div>
+                    <div class="stat-label">No Podrán Asistir</div>
+                </div>
+            </div>
+            <div class="stat-card stat-card-total">
+                <div class="stat-icon-circle stat-icon-total">
+                    <i class="bi bi-clipboard-data-fill"></i>
+                </div>
+                <div class="stat-info">
+                    <div class="stat-num" id="stat-total-registros">0</div>
+                    <div class="stat-label">Total Respuestas</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================================
+             SECCIÓN 1: GENERADOR DE ENLACES PERSONALIZADOS PARA WHATSAPP
+             ======================================================== -->
+        <div class="admin-generator-card">
+            <div class="gen-card-header-styled">
+                <div class="gen-header-icon-box">
+                    <i class="bi bi-whatsapp"></i>
+                </div>
+                <div class="gen-header-text">
+                    <h3 class="gen-title">Generador de Invitaciones Personalizadas</h3>
+                    <p class="gen-desc">Crea enlaces exclusivos con pases asignados listos para enviar por WhatsApp</p>
+                </div>
+            </div>
+
+            <!-- Selector de Modo / Pestañas (Manual vs Excel) -->
+            <div class="gen-mode-tabs" role="tablist">
+                <button type="button" class="gen-tab-btn active" id="tab-btn-manual" role="tab" aria-selected="true">
+                    <i class="bi bi-pencil-square"></i> Uno por Uno (Manual)
+                </button>
+                <button type="button" class="gen-tab-btn" id="tab-btn-excel" role="tab" aria-selected="false">
+                    <i class="bi bi-file-earmark-spreadsheet-fill" style="color: #107C41;"></i> Carga Masiva con Excel (.xlsx)
+                    <span class="gen-tab-badge">¡Rápido y Fácil!</span>
+                </button>
+            </div>
+
+            <!-- ==============================================
+                 PANEL 1: GENERADOR MANUAL (UNO POR UNO)
+                 ============================================== -->
+            <div id="gen-panel-manual">
+                <div class="admin-generator-grid">
+                    <div class="gen-field gen-field-type">
+                        <label for="gen-invitation-type" class="gen-label">
+                            <i class="bi bi-person-badge" style="color: var(--admin-wine-soft);"></i> Tipo de Invitación:
+                        </label>
+                        <select id="gen-invitation-type" class="gen-input gen-select">
+                            <option value="familia" selected>👨‍👩‍👧‍👦 Familia</option>
+                            <option value="amigo">🌸 Amiga / Amigo (Personal)</option>
+                        </select>
+                    </div>
+                    <div class="gen-field">
+                        <label for="gen-family-name" id="gen-label-family-name" class="gen-label">
+                            <i class="bi bi-card-heading" style="color: var(--admin-wine-soft);"></i> Nombre de la Familia:
+                        </label>
+                        <input type="text" id="gen-family-name" class="gen-input" placeholder="Ej: Familia Esparza Morales">
+                    </div>
+                    <div class="gen-field gen-field-sm">
+                        <label for="gen-family-passes" id="gen-label-family-passes" class="gen-label">
+                            <i class="bi bi-ticket-perforated" style="color: var(--admin-wine-soft);"></i> Pases:
+                        </label>
+                        <input type="number" id="gen-family-passes" class="gen-input" style="text-align: center; font-weight: 700;" value="4" min="1" max="25">
+                    </div>
+                    <div class="gen-field">
+                        <label for="gen-family-phone" class="gen-label">
+                            <i class="bi bi-whatsapp" style="color: #25D366;"></i> WhatsApp (Opcional):
+                        </label>
+                        <input type="tel" id="gen-family-phone" class="gen-input" placeholder="Ej: 4491234567 (10 dígitos)">
+                    </div>
+                    <div class="gen-reset-box">
+                        <label class="gen-reset-label">
+                            <input type="checkbox" id="gen-reset-lock" class="gen-reset-checkbox">
+                            <div>
+                                <strong style="color: var(--admin-wine-deep);">
+                                    <i class="bi bi-arrow-clockwise me-1"></i> Desbloquear formulario para este invitado (Reiniciar respuesta)
+                                </strong>
+                                <span style="display: block; font-size: 0.8rem; color: var(--admin-text-muted); margin-top: 3px;">
+                                    Marca esta opción si el invitado tuvo un error de dedo y necesita volver a llenar sus datos en limpio desde su celular.
+                                </span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="admin-generator-actions">
+                    <button type="button" id="btn-generate-link" class="btn-gen-action">
+                        <i class="bi bi-magic"></i> Generar Enlace y Mensaje para WhatsApp
+                    </button>
+                </div>
+
+                <!-- Resultado del enlace generado -->
+                <div id="gen-result-container" class="gen-result-container" style="display: none;">
+                    <div class="gen-result-info">
+                        <span class="gen-result-badge"><i class="bi bi-check-circle-fill me-1"></i> Enlace listo para compartir con esta familia:</span>
+                        <div class="gen-result-url" id="gen-result-url"></div>
+                    </div>
+                    <div class="gen-buttons-row">
+                        <button type="button" id="btn-copy-gen-link" class="btn-admin btn-copy-link">
+                            <i class="bi bi-clipboard"></i> Copiar Enlace
+                        </button>
+                        <button type="button" id="btn-shorten-gen-link" class="btn-admin" style="background: linear-gradient(135deg, #B86578, #9B3E54); color: #fff;">
+                            <i class="bi bi-link-45deg"></i> Acortar (TinyURL)
+                        </button>
+                        <button type="button" id="btn-whatsapp-gen-link" class="btn-admin btn-whatsapp-direct">
+                            <i class="bi bi-whatsapp"></i> Enviar por WhatsApp
+                        </button>
+                        <a id="btn-preview-gen-link" href="#" target="_blank" class="btn-admin btn-preview-link">
+                            <i class="bi bi-box-arrow-up-right"></i> Probar Invitación
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==============================================
+                 PANEL 2: CARGA MASIVA CON EXCEL (.XLSX)
+                 ============================================== -->
+            <div id="gen-panel-excel" class="excel-upload-panel" style="display: none;">
+                <div class="excel-steps-grid">
+                    <!-- Paso 1: Descargar Plantilla -->
+                    <div class="excel-step-card">
+                        <div>
+                            <div class="excel-step-title">
+                                <span class="badge-step">1</span>
+                                Descarga la Plantilla Oficial
+                            </div>
+                            <p class="excel-step-desc">
+                                Llena este archivo en tu computadora o celular con tus invitados. Incluye columnas para <strong>Tipo</strong> (Familia/Amigo), <strong>Nombre</strong>, <strong>Pases</strong> y <strong>Teléfono</strong>.
+                            </p>
+                        </div>
+                        <div class="excel-step-actions">
+                            <a href="assets/plantilla_invitados_xv_lizette.xlsx" download="Plantilla_Invitados_XV_Lizette.xlsx" id="btn-download-xlsx-tpl" class="btn-download-tpl">
+                                <i class="bi bi-file-earmark-excel-fill"></i> Descargar Excel (.xlsx)
+                            </a>
+                            <a href="assets/plantilla_invitados_xv_lizette.csv" download="Plantilla_Invitados_XV_Lizette.csv" id="btn-download-csv-tpl" class="btn-download-tpl-secondary">
+                                <i class="bi bi-filetype-csv"></i> Descargar CSV
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Paso 2: Subir Archivo Lleno -->
+                    <div class="excel-step-card">
+                        <div>
+                            <div class="excel-step-title">
+                                <span class="badge-step">2</span>
+                                Sube tu Archivo con Invitados
+                            </div>
+                            <p class="excel-step-desc">
+                                Arrastra tu archivo o selecciónalo aquí. Aceptamos archivos <strong>.xlsx</strong>, <strong>.xls</strong> o <strong>.csv</strong>.
+                            </p>
+                        </div>
+                        <input type="file" id="excel-file-input" accept=".xlsx, .xls, .csv" style="display: none;">
+                        <div class="excel-dropzone" id="excel-dropzone">
+                            <i class="bi bi-cloud-arrow-up-fill excel-dropzone-icon"></i>
+                            <div class="excel-dropzone-text" id="excel-dropzone-text">Haz clic aquí o arrastra tu archivo Excel</div>
+                            <div class="excel-dropzone-subtext">Archivos compatibles: .xlsx, .xls, .csv</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paso 3: Vista Previa y Procesamiento -->
+                <div id="excel-preview-box" class="excel-preview-box" style="display: none;">
+                    <!-- Mensaje de éxito tras procesar -->
+                    <div id="excel-success-alert" class="excel-success-alert" style="display: none;">
+                        <i class="bi bi-check-circle-fill" style="font-size: 1.3rem;"></i>
+                        <span id="excel-success-msg">¡Invitaciones generadas con éxito! Ya puedes descargar el archivo final o revisarlas en el historial de abajo.</span>
+                    </div>
+
+                    <div class="excel-preview-header">
+                        <div class="excel-preview-title">
+                            <i class="bi bi-table" style="color: var(--admin-wine-main);"></i>
+                            Invitados detectados en: <strong id="excel-file-name" style="color: var(--admin-wine-deep);">archivo.xlsx</strong>
+                        </div>
+                        <div class="excel-count-badge" id="excel-count-badge">0 invitados listos</div>
+                    </div>
+
+                    <div class="excel-preview-table-wrap">
+                        <table class="excel-preview-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 50px;">#</th>
+                                    <th>Tipo</th>
+                                    <th>Nombre de Familia / Invitado</th>
+                                    <th style="text-align: center;">Pases</th>
+                                    <th>Teléfono WhatsApp</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="excel-preview-tbody">
+                                <!-- Filas dinámicas -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="excel-action-bar">
+                        <button type="button" id="btn-process-excel" class="btn-process-excel">
+                            <i class="bi bi-magic"></i> Generar Todas las Invitaciones Masivamente
+                        </button>
+                        <button type="button" id="btn-export-excel-links" class="btn-export-excel-links" style="display: none;">
+                            <i class="bi bi-download"></i> Descargar Excel con Enlaces Listos (.xlsx)
+                        </button>
+                        <button type="button" id="btn-clear-excel" class="btn-clear-excel">
+                            <i class="bi bi-x-circle"></i> Quitar archivo
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Historial de Enlaces Recientes -->
+            <div class="gen-history-wrapper">
+                <div class="gen-history-header">
+                    <span><i class="bi bi-clock-history me-1" style="color: var(--admin-wine-soft);"></i> Invitaciones personalizadas generadas recientemente:</span>
+                    <button type="button" id="btn-clear-gen-history" class="btn-clear-history">
+                        <i class="bi bi-trash3-fill"></i> Limpiar historial
+                    </button>
+                </div>
+                <div id="gen-history-list" class="gen-history-list">
+                    <!-- Items generados dinámicamente con botón de eliminar individual -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================================
+             SECCIÓN 2: CONTROL DE RESPUESTAS & TABLA DE ASISTENCIA
+             ======================================================== -->
+        <div class="section-responses-card">
+            <div class="panel-card-topbar">
+                <div class="title-with-pill">
+                    <div class="title-icon-circle">
+                        <i class="bi bi-card-checklist"></i>
+                    </div>
+                    <div>
+                        <h3 class="panel-card-title">Lista Oficial de Respuestas</h3>
+                        <p class="panel-card-subtitle">Control y confirmación de asistencia en tiempo real</p>
+                    </div>
+                </div>
+                <div class="live-status-chip">
+                    <span class="live-dot"></span> Sincronizado en Vivo
+                </div>
+            </div>
+
+            <!-- Barra de Herramientas: Búsqueda y Filtro SÍ / NO -->
+            <div class="admin-toolbar">
+                <!-- Bloque de Búsqueda -->
+                <div class="admin-search-block">
+                    <i class="bi bi-search admin-search-icon"></i>
+                    <input type="text" id="admin-search-input" class="admin-search-field" placeholder="Buscar por familia, código o teléfono...">
+                    <button type="button" id="admin-search-clear" class="admin-search-clear-btn" title="Limpiar búsqueda" style="display: none;">&times;</button>
+                </div>
+
+                <!-- Bloque de Filtro de Asistencia (SÍ y NO) -->
+                <div class="admin-attendance-filter" role="group" aria-label="Filtro de Asistencia">
+                    <button type="button" class="btn-filter-pill active" data-filter="todos" id="filter-btn-todos" title="Mostrar todas las respuestas">
+                        <i class="bi bi-people-fill"></i> Todos <span class="pill-count" id="pill-count-todos">0</span>
+                    </button>
+                    <button type="button" class="btn-filter-pill pill-yes" data-filter="si" id="filter-btn-si" title="Ver solo los que confirmaron SÍ">
+                        <i class="bi bi-check-circle-fill"></i> SÍ <span class="pill-count" id="pill-count-si">0</span>
+                    </button>
+                    <button type="button" class="btn-filter-pill pill-no" data-filter="no" id="filter-btn-no" title="Ver solo los que confirmaron NO">
+                        <i class="bi bi-x-circle-fill"></i> NO <span class="pill-count" id="pill-count-no">0</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tabla de Confirmaciones Limpia -->
+            <div class="admin-table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Invitado / Familia</th>
+                            <th>Asistencia</th>
+                            <th>Pases</th>
+                            <th>Teléfono</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-table-body">
+                        <!-- Filas renderizadas dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ========================================================
+             SECCIÓN 3: PALABRAS BONITAS & DEDICATORIAS PARA LIZETTE
+             ======================================================== -->
+        <div class="section-responses-card admin-messages-card" style="margin-top: 28px;">
+            <div class="panel-card-topbar">
+                <div class="title-with-pill">
+                    <div class="title-icon-circle" style="background: linear-gradient(135deg, #FFF0F3, #FDE8EB); color: var(--admin-wine-main); border: 1.5px solid #F5CCD4;">
+                        <i class="bi bi-envelope-heart-fill"></i>
+                    </div>
+                    <div>
+                        <h3 class="panel-card-title">Palabras Bonitas para Lizette</h3>
+                        <p class="panel-card-subtitle">Dedicatorias, bendiciones y mensajes de cariño enviados por tus invitados</p>
+                    </div>
+                </div>
+                <div class="live-status-chip" style="background: #FFF0F5; color: var(--admin-wine-main); border-color: #F8BBD0;">
+                    <i class="bi bi-stars"></i> <span id="messages-count-badge">0 dedicatorias</span>
+                </div>
+            </div>
+
+            <div id="admin-messages-grid" class="admin-messages-grid">
+                <!-- Tarjetas de dedicatorias renderizadas dinámicamente -->
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ========================================================
+         MODAL CAMBIAR CONTRASEÑA
+         ======================================================== -->
+    <div id="pwd-modal-overlay" class="pwd-modal-overlay" style="display: none;">
+        <div class="pwd-modal-card">
+            <div class="pwd-modal-header">
+                <button type="button" id="btn-close-pwd-modal" class="pwd-close-btn" aria-label="Cerrar"><i class="bi bi-x-lg"></i></button>
+                <div class="pwd-modal-icon">
+                    <i class="bi bi-shield-lock-fill"></i>
+                </div>
+                <h3>Seguridad del Panel</h3>
+                <p>Cambiar contraseña de acceso a este panel</p>
+            </div>
+
+            <form id="form-change-pwd">
+                <div class="pwd-field-group">
+                    <label for="pwd-current">Contraseña Actual:</label>
+                    <div class="pwd-input-wrap">
+                        <input type="password" id="pwd-current" placeholder="Ingresa tu clave actual" required autocomplete="current-password">
+                    </div>
+                </div>
+
+                <div class="pwd-field-group">
+                    <label for="pwd-new">Nueva Contraseña:</label>
+                    <div class="pwd-input-wrap">
+                        <input type="password" id="pwd-new" placeholder="Mínimo 4 caracteres" required autocomplete="new-password">
+                    </div>
+                </div>
+
+                <div class="pwd-field-group">
+                    <label for="pwd-confirm">Confirmar Nueva Contraseña:</label>
+                    <div class="pwd-input-wrap">
+                        <input type="password" id="pwd-confirm" placeholder="Repite la nueva contraseña" required autocomplete="new-password">
+                    </div>
+                </div>
+
+                <div id="pwd-feedback-msg" class="pwd-feedback" style="display: none;"></div>
+
+                <div class="pwd-actions">
+                    <button type="button" id="btn-cancel-pwd" class="btn-pwd-cancel">Cancelar</button>
+                    <button type="submit" id="btn-save-pwd" class="btn-pwd-save">
+                        <i class="bi bi-check2-circle"></i> Guardar Nueva Clave
+                    </button>
+                </div>
+
+                <div class="pwd-reset-hint">
+                    <button type="button" id="btn-restore-default-pwd" class="btn-link-restore">
+                        <i class="bi bi-arrow-counterclockwise"></i> Restablecer a la clave original (xvlizette2026)
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Librería XLSX para procesamiento masivo de Excel en cliente -->
+    <script src="js/xlsx.full.min.js"></script>
+
+    <!-- Scripts de Modelos y Controladores -->
+    <script src="js/models/EventoModel.js?v=2"></script>
+    <script src="js/models/InvitadoModel.js?v=2"></script>
+    <script src="js/models/ConfirmacionDAO.js?v=2"></script>
+    <script src="js/views/AdminView.js?v=2"></script>
+    <script src="js/controllers/AdminController.js?v=2"></script>
+
+    <!-- Script de Inicialización de la Página de Admin -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const loginSection = document.getElementById("login-section");
+            const dashboardSection = document.getElementById("admin-dashboard-section");
+            const loginForm = document.getElementById("admin-login-form");
+            const loginCard = document.getElementById("login-card-box");
+            const loginInput = document.getElementById("admin-pass");
+            const loginError = document.getElementById("login-error-msg");
+            const btnLogout = document.getElementById("btn-logout");
+            const btnTogglePass = document.getElementById("btn-toggle-pass");
+            const toggleEyeIcon = document.getElementById("toggle-eye-icon");
+            const confirmacionDAO = new ConfirmacionDAO();
+            const adminView = new AdminView();
+            const adminController = new AdminController(confirmacionDAO, adminView);
+
+            // Alternar ver / ocultar contraseña
+            if (btnTogglePass && loginInput) {
+                btnTogglePass.addEventListener("click", () => {
+                    const isPassword = loginInput.type === "password";
+                    loginInput.type = isPassword ? "text" : "password";
+                    if (toggleEyeIcon) {
+                        toggleEyeIcon.className = isPassword ? "bi bi-eye-slash" : "bi bi-eye";
+                    }
+                });
+            }
+
+            // MODAL CAMBIAR CONTRASEÑA
+            const pwdModalOverlay = document.getElementById("pwd-modal-overlay");
+            const btnOpenPwdModal = document.getElementById("btn-open-pwd-modal");
+            const btnClosePwdModal = document.getElementById("btn-close-pwd-modal");
+            const btnCancelPwd = document.getElementById("btn-cancel-pwd");
+            const formChangePwd = document.getElementById("form-change-pwd");
+            const pwdCurrentInput = document.getElementById("pwd-current");
+            const pwdNewInput = document.getElementById("pwd-new");
+            const pwdConfirmInput = document.getElementById("pwd-confirm");
+            const pwdFeedback = document.getElementById("pwd-feedback-msg");
+            const btnRestoreDefaultPwd = document.getElementById("btn-restore-default-pwd");
+
+            function abrirModalPwd() {
+                if (pwdModalOverlay) {
+                    pwdModalOverlay.style.display = "flex";
+                    if (formChangePwd) formChangePwd.reset();
+                    if (pwdFeedback) pwdFeedback.style.display = "none";
+                    setTimeout(() => pwdCurrentInput && pwdCurrentInput.focus(), 100);
+                }
+            }
+
+            function cerrarModalPwd() {
+                if (pwdModalOverlay) {
+                    pwdModalOverlay.style.display = "none";
+                }
+            }
+
+            if (btnOpenPwdModal) btnOpenPwdModal.addEventListener("click", abrirModalPwd);
+            if (btnClosePwdModal) btnClosePwdModal.addEventListener("click", cerrarModalPwd);
+            if (btnCancelPwd) btnCancelPwd.addEventListener("click", cerrarModalPwd);
+            if (pwdModalOverlay) {
+                pwdModalOverlay.addEventListener("click", (e) => {
+                    if (e.target === pwdModalOverlay) cerrarModalPwd();
+                });
+            }
+
+            if (formChangePwd) {
+                formChangePwd.addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    const actual = (pwdCurrentInput.value || "").trim();
+                    const nueva = (pwdNewInput.value || "").trim();
+                    const confirmar = (pwdConfirmInput.value || "").trim();
+
+                    const res = adminController.cambiarClave(actual, nueva, confirmar);
+                    if (pwdFeedback) {
+                        pwdFeedback.style.display = "flex";
+                        pwdFeedback.className = "pwd-feedback " + (res.exito ? "success" : "error");
+                        pwdFeedback.innerHTML = `<i class="bi bi-${res.exito ? 'check-circle-fill' : 'exclamation-triangle-fill'}"></i> <span>${res.mensaje}</span>`;
+                    }
+
+                    if (res.exito) {
+                        setTimeout(() => {
+                            cerrarModalPwd();
+                        }, 1200);
+                    }
+                });
+            }
+
+            if (btnRestoreDefaultPwd) {
+                btnRestoreDefaultPwd.addEventListener("click", () => {
+                    if (confirm("¿Deseas restablecer la contraseña a la clave original (xvlizette2026)?")) {
+                        const res = adminController.restablecerClave();
+                        if (pwdFeedback) {
+                            pwdFeedback.style.display = "flex";
+                            pwdFeedback.className = "pwd-feedback success";
+                            pwdFeedback.innerHTML = `<i class="bi bi-check-circle-fill"></i> <span>${res.mensaje}</span>`;
+                        }
+                        setTimeout(() => {
+                            cerrarModalPwd();
+                        }, 1200);
+                    }
+                });
+            }
+
+            // Verificar si ya tiene sesión activa
+            const sesionActiva = sessionStorage.getItem("xv_admin_autenticado") === "true";
+            if (sesionActiva) {
+                mostrarDashboard();
+            }
+
+            function mostrarDashboard() {
+                if (loginSection) loginSection.style.display = "none";
+                if (dashboardSection) dashboardSection.style.display = "block";
+                adminController.autenticado = true;
+                adminController.actualizarVista();
+            }
+
+            function cerrarSesion() {
+                sessionStorage.removeItem("xv_admin_autenticado");
+                window.location.reload();
+            }
+
+            if (loginForm) {
+                loginForm.addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    const password = (loginInput.value || "").trim();
+                    if (password === adminController.obtenerClave()) {
+                        sessionStorage.setItem("xv_admin_autenticado", "true");
+                        mostrarDashboard();
+                    } else {
+                        if (loginError) {
+                            loginError.style.display = "flex";
+                        }
+                        if (loginCard) {
+                            loginCard.classList.remove("shake");
+                            void loginCard.offsetWidth; // forzar reflujo para reiniciar animación
+                            loginCard.classList.add("shake");
+                        }
+                        loginInput.select();
+                    }
+                });
+
+                if (loginInput) {
+                    loginInput.addEventListener("input", () => {
+                        if (loginError) loginError.style.display = "none";
+                    });
+                }
+            }
+
+            if (btnLogout) {
+                btnLogout.addEventListener("click", cerrarSesion);
+            }
+        });
+    </script>
+</body>
+</html>

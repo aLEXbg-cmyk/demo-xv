@@ -1,0 +1,94 @@
+/* ========================================================
+   VARIABLES DE DISEÑO Y SISTEMA DE TOKENS (CSS3)
+   Paleta de Colores y Estilo Visual (Inspirada en Vestido Rosa Tul)
+   ======================================================== */
+
+:root {
+    /* ----------------------------------------------------
+       SISTEMA ESTRICTO DE VARIABLES CSS - VESTIDO ROSA TUL
+       (Definido estrictamente según los tokens oficiales)
+       ---------------------------------------------------- */
+    --fondo-general-pagina: #F5DCE2;          /* Fondo general atenuado (Rosa Tul suave, cero deslumbramiento) */
+    --contenedores-tarjetas: #FFF6F7;         /* Contenedores / Tarjetas: #FFF6F7 (Lienzo perlado con excelente contraste) */
+    --bordes-divisores-badges: #F7C8D0;       /* Bordes, divisores y badges: #F7C8D0 (Rosa tul claro) */
+    --detalles-chips-iconos: #EAA5B2;         /* Detalles decorativos, chips e íconos: #EAA5B2 (Rosa medio) */
+    --botones-cta-rsvp-acentos: #D6798E;      /* Botones de acción principales (CTA / RSVP) y acentos activos: #D6798E (Rosa acento) */
+    --titulos-nombres-contraste: #9B3E54;     /* Títulos principales, nombres y texto de máximo contraste: #9B3E54 (Rosa profundo burdeos) */
+    --texto-cuerpo: #3A2E31;                  /* Texto de cuerpo: #3A2E31 (Gris carbón suave, evitar #000000) */
+
+    /* Alias canónicos del sistema de diseño */
+    --color-bg-page: #F5DCE2;
+    --color-container-sub: #FDE8EB;
+    --color-border-divider: #F7C8D0;
+    --color-decorative-icon: #EAA5B2;
+    --color-action-cta: #D6798E;
+    --color-title-contrast: #9B3E54;
+    --color-body-text: #3A2E31;
+
+    /* Nombres cortos de alta conveniencia */
+    --bg-page: #F5DCE2;
+    --container-sub: #FDE8EB;
+    --border-divider: #F7C8D0;
+    --decorative-icon: #EAA5B2;
+    --action-cta: #D6798E;
+    --title-contrast: #9B3E54;
+    --body-text: #3A2E31;
+
+    /* ----------------------------------------------------
+       MAPEO DE TOKENS DEL SISTEMA A LA NUEVA PALETA
+       ---------------------------------------------------- */
+    /* Paleta Principal Rosa Tul */
+    --color-rose-soft: var(--color-container-sub);        /* #FDE8EB */
+    --color-rose-light: var(--color-border-divider);      /* #F7C8D0 */
+    --color-rose-gold: var(--color-decorative-icon);      /* #EAA5B2 */
+    --color-rose-deep: var(--color-title-contrast);       /* #9B3E54 */
+    --color-rose-glow: rgba(214, 121, 142, 0.35);
+
+    /* Mapeo de acentos y elementos principales */
+    --color-gold-light: var(--color-container-sub);       /* #FDE8EB */
+    --color-gold-primary: var(--color-action-cta);        /* #D6798E */
+    --color-gold-dark: var(--color-title-contrast);       /* #9B3E54 */
+    --color-gold-foil: linear-gradient(135deg, #F7C8D0 0%, #D6798E 45%, #9B3E54 100%);
+    --color-gold-glow: rgba(214, 121, 142, 0.40);
+    --color-border-gold: var(--color-border-divider);     /* #F7C8D0 */
+
+    /* Fondos y Neutros */
+    --color-bg-ivory: #FFF6F7;                            /* Lienzo perlado suave */
+    --color-bg-card: rgba(255, 246, 247, 0.95);           /* Tarjetas perladas contrastando sobre fondo mate */
+    --color-bg-card-hover: rgba(255, 255, 255, 0.98);
+    --color-text-main: var(--color-body-text);            /* #3A2E31 */
+    --color-text-muted: #645659;                          /* Mauve carbón suave, sin tocar #000000 */
+    --color-text-light: #ffffff;
+
+    /* Fondos Contrastantes y Acento de Noche (Burdeos / Rosa profundo) */
+    --color-royal-dark: #2a0e16;
+    --color-royal-card: #451623;
+
+    /* Degradados Principales con la Paleta */
+    --gradient-cta-btn: linear-gradient(135deg, #D6798E 0%, #9B3E54 100%);
+    --gradient-cta-hover: linear-gradient(135deg, #EAA5B2 0%, #D6798E 100%);
+    --gradient-card-ribbon: linear-gradient(90deg, #F7C8D0 0%, #D6798E 50%, #9B3E54 100%);
+
+    /* Tipografías */
+    --font-script: 'Great Vibes', cursive;
+    --font-serif-display: 'Cinzel Decorative', 'Cinzel', serif;
+    --font-serif-body: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Montserrat', system-ui, -apple-system, sans-serif;
+
+    /* Sombras y Elevaciones adaptadas a Rosa Tul */
+    --shadow-soft: 0 10px 30px rgba(155, 62, 84, 0.06);
+    --shadow-gold: 0 8px 30px rgba(214, 121, 142, 0.28);
+    --shadow-card: 0 16px 45px rgba(155, 62, 84, 0.10);
+    --shadow-floating: 0 20px 50px rgba(42, 14, 22, 0.22);
+
+    /* Bordes y Radios */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-full: 9999px;
+
+    /* Transiciones */
+    --transition-fast: 0.2s ease;
+    --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}

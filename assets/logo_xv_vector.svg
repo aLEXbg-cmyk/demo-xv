@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="100%" height="100%">
+  <defs>
+    <!-- Degradado Oro Rosado de Lujo -->
+    <linearGradient id="roseGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EAA5B2" />
+      <stop offset="30%" stop-color="#FCDADF" />
+      <stop offset="55%" stop-color="#D6798E" />
+      <stop offset="85%" stop-color="#9B3E54" />
+      <stop offset="100%" stop-color="#D6798E" />
+    </linearGradient>
+
+    <!-- Degradado Dorado Real -->
+    <linearGradient id="royalGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE082" />
+      <stop offset="25%" stop-color="#FFF8E1" />
+      <stop offset="50%" stop-color="#D4AF37" />
+      <stop offset="80%" stop-color="#AA771C" />
+      <stop offset="100%" stop-color="#D4AF37" />
+    </linearGradient>
+
+    <!-- Degradado Vino / Borgoña Profundo -->
+    <linearGradient id="burgundyGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9B3E54" />
+      <stop offset="50%" stop-color="#702035" />
+      <stop offset="100%" stop-color="#9B3E54" />
+    </linearGradient>
+
+    <!-- Sombra elegante suave -->
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#9B3E54" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <g filter="url(#softGlow)">
+    <!-- Marco Exterior Circular Ornamental -->
+    <circle cx="400" cy="400" r="330" fill="none" stroke="url(#roseGold)" stroke-width="2.5" stroke-dasharray="6,4" opacity="0.75" />
+    <circle cx="400" cy="400" r="315" fill="none" stroke="url(#royalGold)" stroke-width="4" />
+    <circle cx="400" cy="400" r="298" fill="none" stroke="url(#roseGold)" stroke-width="1.5" />
+
+    <!-- Puntos cardinales decorativos -->
+    <circle cx="400" cy="70" r="4.5" fill="url(#royalGold)" />
+    <circle cx="400" cy="730" r="4.5" fill="url(#royalGold)" />
+    <circle cx="70" cy="400" r="4.5" fill="url(#royalGold)" />
+    <circle cx="730" cy="400" r="4.5" fill="url(#royalGold)" />
+
+    <!-- Destellos estrellados -->
+    <path d="M 400 50 Q 400 65 415 65 Q 400 65 400 80 Q 400 65 385 65 Q 400 65 400 50 Z" fill="url(#royalGold)" />
+    <path d="M 190 190 Q 190 200 200 200 Q 190 200 190 210 Q 190 200 180 200 Q 190 200 190 190 Z" fill="url(#roseGold)" />
+    <path d="M 610 190 Q 610 200 620 200 Q 610 200 610 210 Q 610 200 600 200 Q 610 200 610 190 Z" fill="url(#roseGold)" />
+
+    <!-- Guirnalda de Hojas de Laurel (Lado Izquierdo) -->
+    <g fill="url(#roseGold)" stroke="none">
+      <path d="M 130,380 C 130,270 190,175 290,130 C 275,155 270,185 280,210 C 255,185 220,195 210,225 C 190,210 165,225 160,255 C 145,245 130,265 135,295 C 120,290 110,315 120,340 C 110,345 105,370 120,390 C 110,400 110,430 125,445 C 115,465 125,495 145,510 C 135,530 155,560 180,570 C 170,590 195,620 225,625 C 220,640 245,665 275,660 C 200,605 130,500 130,380 Z" opacity="0.6"/>
+    </g>
+
+    <!-- Guirnalda de Hojas de Laurel (Lado Derecho - Reflejo) -->
+    <g fill="url(#roseGold)" stroke="none" transform="translate(800, 0) scale(-1, 1)">
+      <path d="M 130,380 C 130,270 190,175 290,130 C 275,155 270,185 280,210 C 255,185 220,195 210,225 C 190,210 165,225 160,255 C 145,245 130,265 135,295 C 120,290 110,315 120,340 C 110,345 105,370 120,390 C 110,400 110,430 125,445 C 115,465 125,495 145,510 C 135,530 155,560 180,570 C 170,590 195,620 225,625 C 220,640 245,665 275,660 C 200,605 130,500 130,380 Z" opacity="0.6"/>
+    </g>
+
+    <!-- Corona / Tiara Real de XV Años -->
+    <g transform="translate(400, 205)" fill="url(#royalGold)" stroke="#9B3E54" stroke-width="0.8">
+      <!-- Base de la corona -->
+      <path d="M -110,40 C -40,48 40,48 110,40 C 105,48 40,56 -110,40 Z" fill="url(#roseGold)" />
+      <!-- Picos de la corona -->
+      <path d="M -100,38 L -90,0 L -60,25 L -35,-15 L 0,32 L 35,-15 L 60,25 L 90,0 L 100,38 C 50,45 -50,45 -100,38 Z" fill="url(#royalGold)" />
+      <!-- Pico central más alto con flor de lis / joya -->
+      <path d="M -22,25 Q 0,-38 0,-42 Q 0,-38 22,25 Z" fill="url(#royalGold)" />
+      <!-- Diamante / Gema central -->
+      <polygon points="0,-48 7,-36 0,-24 -7,-36" fill="#FFFFFF" stroke="url(#roseGold)" stroke-width="1.5" />
+      <circle cx="-90" cy="-3" r="4.5" fill="#FFFFFF" />
+      <circle cx="-35" cy="-18" r="5" fill="#FFFFFF" />
+      <circle cx="35" cy="-18" r="5" fill="#FFFFFF" />
+      <circle cx="90" cy="-3" r="4.5" fill="#FFFFFF" />
+      <circle cx="0" cy="15" r="5" fill="#9B3E54" />
+      <circle cx="-45" cy="22" r="4" fill="#9B3E54" />
+      <circle cx="45" cy="22" r="4" fill="#9B3E54" />
+    </g>
+
+    <!-- Monograma Central Elegante LG -->
+    <g transform="translate(400, 410)" text-anchor="middle">
+      <!-- Letra L entrelazada -->
+      <text x="-35" y="45" font-family="'Cinzel', 'Cinzel Decorative', 'Cormorant Garamond', serif" font-size="190" font-weight="700" fill="url(#burgundyGlow)" letter-spacing="-5" opacity="0.95">L</text>
+      <!-- Letra G en relieve superpuesta -->
+      <text x="35" y="55" font-family="'Cinzel', 'Cinzel Decorative', 'Cormorant Garamond', serif" font-size="190" font-weight="700" fill="url(#roseGold)" letter-spacing="-5">G</text>
+      <!-- Detalles dorados en las terminaciones de las letras -->
+      <circle cx="-95" cy="40" r="3.5" fill="url(#royalGold)" />
+      <circle cx="105" cy="-25" r="3.5" fill="url(#royalGold)" />
+    </g>
+
+    <!-- Cinta / Listón de Gala Central -->
+    <g transform="translate(400, 520)">
+      <!-- Sombra banner -->
+      <path d="M -220,15 L -200,-5 L 200,-5 L 220,15 L 200,35 L -200,35 Z" fill="#691B2E" opacity="0.4" />
+      <!-- Banner frontal -->
+      <path d="M -210,0 L -190,-18 L 190,-18 L 210,0 L 190,18 L -190,18 Z" fill="url(#burgundyGlow)" stroke="url(#royalGold)" stroke-width="2" />
+      <!-- Texto XV AÑOS -->
+      <text x="0" y="7" font-family="'Cinzel', 'Montserrat', serif" font-size="22" font-weight="700" fill="#FFF6F7" letter-spacing="12" text-anchor="middle">XV AÑOS</text>
+    </g>
+
+    <!-- Subtítulo / Nombre Lizette Guadalupe -->
+    <g transform="translate(400, 580)" text-anchor="middle">
+      <text x="0" y="0" font-family="'Cinzel', 'Cormorant Garamond', serif" font-size="24" font-weight="600" fill="url(#burgundyGlow)" letter-spacing="6">LIZETTE GUADALUPE</text>
+      <line x1="-120" y1="18" x2="120" y2="18" stroke="url(#roseGold)" stroke-width="1.5" />
+      <circle cx="0" cy="18" r="3" fill="url(#royalGold)" />
+      <text x="0" y="38" font-family="'Montserrat', sans-serif" font-size="12" font-weight="500" fill="#9B3E54" letter-spacing="8">MIS QUINCE AÑOS</text>
+    </g>
+  </g>
+</svg>
+

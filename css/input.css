@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-page: #F5DCE2;
+  --color-container-sub: #FDE8EB;
+  --color-border-divider: #F7C8D0;
+  --color-decorative-icon: #EAA5B2;
+  --color-action-cta: #D6798E;
+  --color-title-contrast: #9B3E54;
+  --color-body-text: #3A2E31;
+
+  --color-rose-soft: #FDE8EB;
+  --color-rose-light: #F7C8D0;
+  --color-rose-gold: #EAA5B2;
+  --color-rose-deep: #9B3E54;
+  --color-gold-primary: #D6798E;
+  --color-gold-light: #FDE8EB;
+  --color-gold-dark: #9B3E54;
+  --color-royal-dark: #2a0e16;
+  --color-royal-card: #451623;
+  --font-serif-display: "Cinzel Decorative", "Cinzel", serif;
+  --font-serif-body: "Cormorant Garamond", Georgia, serif;
+  --font-script: "Great Vibes", cursive;
+  --font-sans: "Montserrat", system-ui, -apple-system, sans-serif;
+}

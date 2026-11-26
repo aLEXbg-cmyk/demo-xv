@@ -165,7 +165,7 @@ class AdminController {
     }
 
     generarFirma(nombre, pases) {
-        const secret = "xv_lizette_gala_2026";
+        const secret = "xv_valentina_gala_2026";
         const str = `${(nombre || "").trim().toLowerCase().replace(/\s+/g, "_")}_${pases}_${secret}`;
         let hash = 0;
         for (let i = 0; i < str.length; i++) {
@@ -184,7 +184,7 @@ class AdminController {
         }
 
         const claveReal = this.obtenerClave();
-        const claveIngresada = prompt("Panel de Anfitriones (Padres de Lizette)\nIngresa la clave de acceso:");
+        const claveIngresada = prompt("Panel de Anfitriones (Padres de Valentina)\nIngresa la clave de acceso:");
         if (claveIngresada === claveReal) {
             this.autenticado = true;
             this.actualizarVista();
@@ -195,7 +195,7 @@ class AdminController {
     }
 
     obtenerClave() {
-        return localStorage.getItem("xv_admin_password") || "xvlizette2026";
+        return localStorage.getItem("xv_valentina_admin_password") || "xvvalentina2026";
     }
 
     cambiarClave(claveActual, nuevaClave, confirmarClave) {
@@ -209,15 +209,15 @@ class AdminController {
         if (nuevaClave !== confirmarClave) {
             return { exito: false, mensaje: "Las contraseñas no coinciden. Verifica e intenta nuevamente." };
         }
-        localStorage.setItem("xv_admin_password", nuevaClave.trim());
+        localStorage.setItem("xv_valentina_admin_password", nuevaClave.trim());
         this.claveAcceso = nuevaClave.trim();
         return { exito: true, mensaje: "¡Contraseña actualizada con éxito!" };
     }
 
     restablecerClave() {
-        localStorage.removeItem("xv_admin_password");
-        this.claveAcceso = "xvlizette2026";
-        return { exito: true, mensaje: "La contraseña ha sido restablecida a xvlizette2026." };
+        localStorage.removeItem("xv_valentina_admin_password");
+        this.claveAcceso = "xvvalentina2026";
+        return { exito: true, mensaje: "La contraseña ha sido restablecida a xvvalentina2026." };
     }
 
     actualizarVista() {
@@ -232,7 +232,7 @@ class AdminController {
         // Actualizar números en los botones de filtro SÍ / NO / Todos
         this.adminView.actualizarContadoresFiltro(countTotal, countSi, countNo);
 
-        // Renderizar dedicatorias y palabras bonitas para Lizette
+        // Renderizar dedicatorias y palabras bonitas para Valentina
         if (typeof this.adminView.renderizarMensajes === "function") {
             this.adminView.renderizarMensajes(invitados);
         }
@@ -296,16 +296,16 @@ class AdminController {
                 `🎟️ He reservado con mucho cariño *${pases} ${pases === 1 ? 'pase personal exclusivo' : 'pases especiales'}* para ti.\n\n` +
                 `Aquí puedes abrir tu invitación interactiva con itinerario, música y confirmar tu asistencia:\n` +
                 `👉 ${urlFinal}\n\n` +
-                `_Por favor confírmame antes del 10 de Enero para garantizar tu lugar._\n` +
+                `_Por favor confírmame antes del 10 de Octubre para garantizar tu lugar._\n` +
                 `¡No puedes faltar, te espero con mucha emoción! 💖👑`;
         } else {
             mensajeGala = `✨ *INVITACIÓN OFICIAL DE GALA · MIS XV AÑOS* ✨\n\n` +
                 `Querida *${nombre}*:\n\n` +
-                `En compañía de Dios y nuestra familia, nos complace enormemente invitarlos a la celebración de los XV Años de *Lizette Guadalupe*.\n\n` +
+                `En compañía de Dios y nuestra familia, nos complace enormemente invitarlos a la celebración de los XV Años de *Valentina Sofía*.\n\n` +
                 `🎟️ Hemos reservado con mucho aprecio *${pases} ${pases === 1 ? 'pase oficial' : 'pases oficiales'}* para su distinguida familia.\n\n` +
                 `Pueden abrir su invitación digital personalizada para consultar itinerario, mapa de ubicaciones y confirmar quiénes asistirán aquí:\n` +
                 `👉 ${urlFinal}\n\n` +
-                `_Por favor confirmen antes del 10 de Enero para garantizar su reservación._\n` +
+                `_Por favor confirmen antes del 10 de Octubre para garantizar su reservación._\n` +
                 `¡Será un honor compartir este día tan especial con ustedes! 🥂💖`;
         }
 
@@ -336,7 +336,7 @@ class AdminController {
         if (!nombreFamilia) {
             const mensajeAlerta = tipo === "amigo" 
                 ? "Por favor escribe el nombre de la amiga o amigo (Ej: Sofía Martínez)." 
-                : "Por favor escribe el nombre de la familia o del invitado (Ej: Familia Esparza Morales).";
+                : "Por favor escribe el nombre de la familia o del invitado (Ej: Familia Castillo Morales).";
             alert(mensajeAlerta);
             if (this.adminView.genNameInput) this.adminView.genNameInput.focus();
             return;
@@ -516,7 +516,7 @@ class AdminController {
             ];
 
             XLSX.utils.book_append_sheet(wb, ws, "Invitaciones Listas");
-            XLSX.writeFile(wb, "Invitaciones_Generadas_XV_Lizette.xlsx");
+            XLSX.writeFile(wb, "Invitaciones_Generadas_XV_Valentina.xlsx");
         } catch (err) {
             console.error("Error al exportar Excel con enlaces:", err);
             alert("No se pudo descargar el archivo: " + err.message);
@@ -615,7 +615,7 @@ class AdminController {
 
     guardarEnHistorial(familia, pases, url, mensaje, telefono, tipo = "familia") {
         try {
-            const historial = JSON.parse(localStorage.getItem("xv_lizette_enlaces_gen") || "[]");
+            const historial = JSON.parse(localStorage.getItem("xv_valentina_enlaces_gen") || "[]");
             historial.unshift({
                 familia,
                 pases,
@@ -626,7 +626,7 @@ class AdminController {
                 fecha: new Date().toLocaleDateString("es-MX", { day: "2-digit", month: "short" })
             });
             // Mantener solo los últimos 20
-            localStorage.setItem("xv_lizette_enlaces_gen", JSON.stringify(historial.slice(0, 20)));
+            localStorage.setItem("xv_valentina_enlaces_gen", JSON.stringify(historial.slice(0, 20)));
         } catch (e) {
             console.error("Error guardando historial de enlaces:", e);
         }
@@ -634,7 +634,7 @@ class AdminController {
 
     actualizarHistorialEnlaces() {
         try {
-            const historial = JSON.parse(localStorage.getItem("xv_lizette_enlaces_gen") || "[]");
+            const historial = JSON.parse(localStorage.getItem("xv_valentina_enlaces_gen") || "[]");
             this.adminView.renderizarHistorial(
                 historial,
                 (item) => this.copiarEnlaceAlPortapapeles(item.url),
@@ -648,10 +648,10 @@ class AdminController {
 
     eliminarEnlaceHistorial(index) {
         try {
-            const historial = JSON.parse(localStorage.getItem("xv_lizette_enlaces_gen") || "[]");
+            const historial = JSON.parse(localStorage.getItem("xv_valentina_enlaces_gen") || "[]");
             if (index >= 0 && index < historial.length) {
                 historial.splice(index, 1);
-                localStorage.setItem("xv_lizette_enlaces_gen", JSON.stringify(historial));
+                localStorage.setItem("xv_valentina_enlaces_gen", JSON.stringify(historial));
                 this.actualizarHistorialEnlaces();
             }
         } catch (e) {
@@ -660,7 +660,7 @@ class AdminController {
     }
 
     limpiarHistorialEnlaces() {
-        localStorage.removeItem("xv_lizette_enlaces_gen");
+        localStorage.removeItem("xv_valentina_enlaces_gen");
         this.actualizarHistorialEnlaces();
     }
 

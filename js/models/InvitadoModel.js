@@ -51,7 +51,7 @@ class InvitadoModel {
      */
     generarIdUnico() {
         const aleatorio = Math.floor(1000 + Math.random() * 9000);
-        return `VIP-LIZ-${aleatorio}`;
+        return `VIP-VAL-${aleatorio}`;
     }
 
     /**
@@ -93,7 +93,7 @@ class InvitadoModel {
     /**
      * Genera el mensaje oficial con formato editorial para enviar por WhatsApp
      */
-    generarTextoWhatsApp(nombreQuinceanera = "Lizette Guadalupe") {
+    generarTextoWhatsApp(nombreQuinceanera = "Valentina Sofía") {
         if (!this.asistencia) {
             if (this.tipo === "amigo") {
                 return `*RESPUESTA A INVITACIÓN · XV AÑOS DE ${nombreQuinceanera.toUpperCase()}*\n` +

@@ -14,7 +14,7 @@ class PersonalizacionService {
     }
 
     generarFirma(nombre, pases) {
-        const secret = "xv_lizette_gala_2026";
+        const secret = "xv_valentina_gala_2026";
         const str = `${(nombre || "").trim().toLowerCase().replace(/\s+/g, "_")}_${pases}_${secret}`;
         let hash = 0;
         for (let i = 0; i < str.length; i++) {
@@ -53,7 +53,7 @@ class PersonalizacionService {
         const mesa = rawMesa ? decodeURIComponent(rawMesa).trim() : null;
         const telefono = rawTel ? decodeURIComponent(rawTel).trim() : null;
 
-        // Detección de formato ultra-corto: ?Karla=2 o ?Karla o ?Familia_Esparza=4 (incluso con &r=1 o reset)
+        // Detección de formato ultra-corto: ?Karla=2 o ?Karla o ?Familia_Castillo=4 (incluso con &r=1 o reset)
         if (!familia) {
             const rawSearch = window.location.search ? window.location.search.substring(1).trim() : "";
             const rawHash = window.location.hash ? window.location.hash.substring(1).trim() : "";

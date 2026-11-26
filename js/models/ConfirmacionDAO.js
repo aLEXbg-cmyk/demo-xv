@@ -8,7 +8,7 @@
 
 class ConfirmacionDAO {
     constructor() {
-        this.storageKey = "xv_lizette_confirmaciones_db";
+        this.storageKey = "xv_valentina_confirmaciones_db";
         this.inicializar();
     }
 
@@ -23,7 +23,7 @@ class ConfirmacionDAO {
             // Limpiar automáticamente cualquier dato demo precargado previamente
             try {
                 const lista = JSON.parse(existente);
-                const demoIds = ["VIP-LIZ-1001", "VIP-LIZ-1002", "VIP-LIZ-1003", "VIP-LIZ-1004"];
+                const demoIds = ["VIP-VAL-1001", "VIP-VAL-1002", "VIP-VAL-1003", "VIP-VAL-1004"];
                 const sinDemo = lista.filter(item => !demoIds.includes(item.id));
                 if (sinDemo.length !== lista.length) {
                     localStorage.setItem(this.storageKey, JSON.stringify(sinDemo));
@@ -234,7 +234,7 @@ class ConfirmacionDAO {
         const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
         const enlace = document.createElement("a");
         enlace.href = URL.createObjectURL(blob);
-        enlace.download = `Lista_Oficial_Confirmados_XV_Lizette_${new Date().toISOString().slice(0, 10)}.csv`;
+        enlace.download = `Lista_Oficial_Confirmados_XV_Valentina_${new Date().toISOString().slice(0, 10)}.csv`;
         document.body.appendChild(enlace);
         enlace.click();
         document.body.removeChild(enlace);

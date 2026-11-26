@@ -1,4 +1,4 @@
-# 👑 Invitación Digital de XV Años - Lizette Guadalupe
+# 👑 Invitación Digital de XV Años - Valentina Sofía
 ### Arquitectura Modelo-Vista-Controlador (MVC) para Apache NetBeans
 
 Una aplicación interactiva de alta gama para invitación de XV Años con confirmación de asistencia en tiempo real (RSVP), generación de pases digitales con código QR, enlace directo a WhatsApp, reproductor musical con sintetizador Web Audio y panel de control para los anfitriones.
@@ -122,7 +122,7 @@ Luego abre tu navegador en `http://localhost:3000`.
 
 9. **👑 Panel de Anfitriones (Exclusivo para los papás)**:
    - Ubicado discretamente en el pie de página.
-   - Protegido con contraseña (por defecto: `xvlizette2026`).
+   - Protegido con contraseña (por defecto: `xvvalentina2026`).
    - Métricas en tiempo real: Total de pases confirmados, asistentes confirmados, declinados y distribución de menús.
    - Buscador en tiempo real por nombre, folio o teléfono.
    - Botón para **Exportar a Microsoft Excel (formato CSV con codificación UTF-8)**.

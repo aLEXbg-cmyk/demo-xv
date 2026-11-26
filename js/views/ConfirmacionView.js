@@ -198,7 +198,7 @@ class ConfirmacionView {
                 this.labelGuestName.innerHTML = `Nombre de la Familia Invitada <span class="req">*</span>`;
             }
             if (this.nombreInput) {
-                this.nombreInput.placeholder = "Ej: Familia Esparza Morales";
+                this.nombreInput.placeholder = "Ej: Familia Castillo Morales";
             }
             if (this.labelPassesSelector) {
                 this.labelPassesSelector.textContent = "Integrantes de la Familia (Pase Familiar)";
@@ -446,7 +446,7 @@ class ConfirmacionView {
                 if (esAmigo) {
                     this.modalMessageBody.textContent = `Muchas gracias por avisarnos, ${invitado.nombre}. Lamentamos mucho que no puedas acompañarnos, ¡pero agradecemos de todo corazón tu cariño y tus buenos deseos!`;
                 } else {
-                    this.modalMessageBody.textContent = `Muchas gracias por avisarnos. Lamentamos que no puedan acompañarnos en esta ocasión, ¡pero agradecemos sinceramente sus atenciones y bendiciones para Lizette!`;
+                    this.modalMessageBody.textContent = `Muchas gracias por avisarnos. Lamentamos que no puedan acompañarnos en esta ocasión, ¡pero agradecemos sinceramente sus atenciones y bendiciones para Valentina!`;
                 }
             }
 
@@ -524,7 +524,7 @@ class ConfirmacionView {
                 this.confirmedCardIcon.innerHTML = `<i class="bi bi-heart-fill" style="color: var(--color-action-cta);"></i>`;
             }
             if (this.confirmedGuestSubtitle) {
-                this.confirmedGuestSubtitle.textContent = "Agradecemos de corazón habernos avisado. ¡Apreciamos tus bendiciones y buenos deseos para Lizette!";
+                this.confirmedGuestSubtitle.textContent = "Agradecemos de corazón habernos avisado. ¡Apreciamos tus bendiciones y buenos deseos para Valentina!";
             }
             if (this.confirmedSummaryBox) {
                 this.confirmedSummaryBox.style.display = "none";

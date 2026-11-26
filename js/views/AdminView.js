@@ -69,7 +69,7 @@ class AdminView {
         this.excelSuccessAlert = document.getElementById("excel-success-alert");
         this.excelSuccessMsg = document.getElementById("excel-success-msg");
 
-        // Sección de Palabras Bonitas & Mensajes para Lizette
+        // Sección de Palabras Bonitas & Mensajes para Valentina
         this.messagesGrid = document.getElementById("admin-messages-grid");
         this.messagesCountBadge = document.getElementById("messages-count-badge");
 
@@ -90,7 +90,7 @@ class AdminView {
                     }
                 } else {
                     if (this.genLabelFamilyName) this.genLabelFamilyName.textContent = "Nombre de la Familia:";
-                    if (this.genNameInput) this.genNameInput.placeholder = "Ej: Familia Esparza Morales";
+                    if (this.genNameInput) this.genNameInput.placeholder = "Ej: Familia Castillo Morales";
                     if (this.genLabelFamilyPasses) this.genLabelFamilyPasses.textContent = "Pases Familiares:";
                     if (this.genPassesInput && (this.genPassesInput.value === "1" || !this.genPassesInput.value)) {
                         this.genPassesInput.value = "4";
@@ -453,7 +453,7 @@ class AdminView {
     }
 
     /**
-     * Renderiza las dedicatorias y palabras bonitas de los invitados para Lizette
+     * Renderiza las dedicatorias y palabras bonitas de los invitados para Valentina
      */
     renderizarMensajes(invitados) {
         if (!this.messagesGrid) return;

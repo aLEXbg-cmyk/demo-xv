@@ -144,7 +144,7 @@ class InvitacionView {
      * 1. Rotura del sello dorado de cera con repique de campanillas y chispas
      * 2. Despliegue en 3D de la solapa superior revelando el forro de gala
      * 3. Deslizamiento suave de la carta interior emergiendo del sobre
-     * 4. Revelación completa con foto de Lizette y opción de entrar
+     * 4. Revelación completa con foto de la quinceañera y opción de entrar
      */
     abrirSobre(callback) {
         const envelope = document.getElementById("real-envelope");

@@ -10,39 +10,39 @@ class EventoModel {
     constructor() {
         this.datos = {
             quinceanera: {
-                nombre: "Lizette Guadalupe",
-                apellidos: "Esparza Díaz",
+                nombre: "Valentina Sofía",
+                apellidos: "Castillo Herrera",
                 titulo: "Mis XV Años",
                 frase: "Hay momentos en la vida que son inolvidables, y compartirlos con las personas que más quiero los hace aún más especiales. ¡Acompáñame a celebrar mis 15 primaveras!",
                 foto: "assets/quinceanera.jpg"
             },
             padres: {
-                papa: "Marco Antonio Esparza Solís",
-                mama: "Yolanda Díaz Soria"
+                papa: "Alejandro Castillo Morales",
+                mama: "Claudia Herrera Gómez"
             },
             padrinos: {
-                padrino: "Espacio reservado para Padrino",
-                madrina: "Paulina Díaz Soria"
+                padrino: "Fernando Torres Delgado",
+                madrina: "Mariana Castillo Morales"
             },
-            fechaEvento: new Date("2026-01-16T17:00:00"),
-            fechaLimiteConfirmacion: new Date("2026-01-08T23:59:59"),
+            fechaEvento: new Date("2026-10-17T17:00:00"),
+            fechaLimiteConfirmacion: new Date("2026-10-10T23:59:59"),
             ceremonia: {
                 tipo: "Ceremonia Religiosa",
-                lugar: "Parroquia del Señor de Los Milagros",
+                lugar: "Parroquia de San Sebastián Mártir",
                 hora: "17:00 hrs",
-                direccion: "Constelaciones 401, Col. Popular Anaya, C.P. 37240 León, Gto.",
-                mapsUrl: "https://maps.app.goo.gl/sz6uGPwsLEBQSrg58"
+                direccion: "Blvd. Adolfo López Mateos 1205, Zona Centro, C.P. 37000 León, Gto.",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Parroquia+de+San+Sebastian+Martir+Leon+Gto"
             },
             recepcion: {
                 tipo: "Recepción y Fiesta",
-                lugar: "Quinta San Juan",
+                lugar: "Jardín Real de Los Rosales",
                 hora: "19:00 hrs",
-                direccion: "Del Avio 113, San Jerónimo II, C.P. 37148 León, Gto.",
-                mapsUrl: "https://maps.app.goo.gl/rM3Nq6uEkKoEwpLx6"
+                direccion: "Av. Paseo de los Insurgentes 1850, Jardines del Moral, C.P. 37160 León, Gto.",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Jardines+del+Moral+Leon+Gto"
             },
             itinerario: [
-                { hora: "17:00 hrs", titulo: "Misa de Acción de Gracias", descripcion: "Parroquia del Señor de Los Milagros" },
-                { hora: "19:00 hrs", titulo: "Recepción & Cóctel de Bienvenida", descripcion: "Quinta San Juan" },
+                { hora: "17:00 hrs", titulo: "Misa de Acción de Gracias", descripcion: "Parroquia de San Sebastián Mártir" },
+                { hora: "19:00 hrs", titulo: "Recepción & Cóctel de Bienvenida", descripcion: "Jardín Real de Los Rosales" },
                 { hora: "20:30 hrs", titulo: "Entrada Triunfal & Vals de Honor", descripcion: "Vals con papás y chambelanes" },
                 { hora: "21:30 hrs", titulo: "Cena de Gala", descripcion: "Banquete formal en tres tiempos" },
                 { hora: "22:45 hrs", titulo: "Brindis & Pastel", descripcion: "Palabras de agradecimiento" },
@@ -77,15 +77,15 @@ class EventoModel {
      */
     obtenerTiempoRestante() {
         const ahora = new Date().getTime();
-        let destino = this.datos.fechaEvento.getTime();
+        const destino = this.datos.fechaEvento.getTime();
         let diferencia = destino - ahora;
 
-        // Si la fecha configurada ya pasó respecto a la fecha del sistema, proyecta automáticamente al próximo 16 de enero
+        // Si la fecha configurada ya pasó respecto a la fecha del sistema, proyecta automáticamente al próximo 17 de octubre
         if (diferencia <= 0) {
             const d = new Date();
-            const year = (d.getMonth() === 0 && d.getDate() < 16) ? d.getFullYear() : d.getFullYear() + 1;
-            const proximoEnero = new Date(year, 0, 16, 17, 0, 0);
-            diferencia = proximoEnero.getTime() - ahora;
+            const year = (d.getMonth() < 9 || (d.getMonth() === 9 && d.getDate() < 17)) ? d.getFullYear() : d.getFullYear() + 1;
+            const proximoOctubre = new Date(year, 9, 17, 17, 0, 0);
+            diferencia = proximoOctubre.getTime() - ahora;
         }
 
         if (diferencia <= 0) {
@@ -105,8 +105,8 @@ class EventoModel {
      */
     generarGoogleCalendarUrl() {
         const titulo = encodeURIComponent(`XV Años de ${this.datos.quinceanera.nombre}`);
-        const fechaInicio = "20261219T230000Z";
-        const fechaFin = "20261220T080000Z";
+        const fechaInicio = "20261017T230000Z";
+        const fechaFin = "20261018T080000Z";
         const detalles = encodeURIComponent(`Celebración de los XV Años de ${this.datos.quinceanera.nombre}. Ceremonia en ${this.datos.ceremonia.lugar} y Recepción en ${this.datos.recepcion.lugar}.`);
         const ubicacion = encodeURIComponent(`${this.datos.ceremonia.lugar}, ${this.datos.ceremonia.direccion}`);
 
@@ -120,14 +120,14 @@ class EventoModel {
         const contenido = [
             "BEGIN:VCALENDAR",
             "VERSION:2.0",
-            "PRODID:-//XV Lizette Guadalupe//Invitacion Digital//ES",
+            "PRODID:-//XV Valentina Sofia//Invitacion Digital//ES",
             "CALSCALE:GREGORIAN",
             "METHOD:PUBLISH",
             "BEGIN:VEVENT",
-            "UID:xv-lizette-guadalupe@quinceanera.com",
-            "DTSTAMP:20261105T120000Z",
-            "DTSTART:20270116T230000Z",
-            "DTEND:20270117T080000Z",
+            "UID:xv-valentina-sofia@quinceanera.com",
+            "DTSTAMP:20261001T120000Z",
+            "DTSTART:20261017T230000Z",
+            "DTEND:20261018T080000Z",
             `SUMMARY:Mis XV Años - ${this.datos.quinceanera.nombre}`,
             `DESCRIPTION:Acompáñanos a celebrar los XV Años de ${this.datos.quinceanera.nombre}. Recepción en ${this.datos.recepcion.lugar}.`,
             `LOCATION:${this.datos.ceremonia.lugar}, ${this.datos.ceremonia.direccion}`,
@@ -139,7 +139,7 @@ class EventoModel {
         const blob = new Blob([contenido], { type: "text/calendar;charset=utf-8" });
         const enlace = document.createElement("a");
         enlace.href = URL.createObjectURL(blob);
-        enlace.download = "XV_Anos_Lizette_Guadalupe.ics";
+        enlace.download = "XV_Anos_Valentina_Sofia.ics";
         document.body.appendChild(enlace);
         enlace.click();
         document.body.removeChild(enlace);

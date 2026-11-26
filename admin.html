@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Anfitriones VIP · XV Años Lizette Guadalupe</title>
+    <title>Panel de Anfitriones VIP · XV Años Valentina Sofía</title>
     
     <!-- Fuentes Tipográficas Oficiales de Gala -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2417,13 +2417,13 @@
             <!-- Emblema de Gala con Logo Minimalista Oficial -->
             <div class="login-brand-wrapper">
                 <div class="login-logo-glow"></div>
-                <img src="assets/logo_xv_minimalista.png" alt="Emblema XV Años Lizette" class="login-logo-img">
+                <div class="login-logo-img" style="display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:1.85rem;font-weight:800;color:#7A253A;background:linear-gradient(135deg,#FFF6F7 0%,#FDE8EB 100%);letter-spacing:1.5px;" aria-label="Emblema XV Años Valentina Sofía">VS</div>
             </div>
 
             <!-- Título y Evento -->
             <div>
                 <div class="login-event-pill">
-                    <i class="bi bi-stars"></i> MIS XV AÑOS · LIZETTE GUADALUPE
+                    <i class="bi bi-stars"></i> MIS XV AÑOS · VALENTINA SOFÍA
                 </div>
             </div>
             <h2 class="login-title">Panel de Anfitriones</h2>
@@ -2472,7 +2472,7 @@
         <!-- Barra de Navegación Superior -->
         <header class="admin-nav">
             <div class="admin-nav-brand">
-                <div class="admin-nav-logo">LG</div>
+                <div class="admin-nav-logo">VS</div>
                 <div class="admin-nav-info">
                     <h1>
                         Panel de Anfitriones
@@ -2480,7 +2480,7 @@
                     </h1>
                     <p>
                         <i class="bi bi-calendar-heart me-1" style="color: var(--admin-gold-rich);"></i>
-                        16 de Enero de 2026 · Lizette Guadalupe
+                        17 de Octubre de 2026 · Valentina Sofía
                     </p>
                 </div>
             </div>
@@ -2580,7 +2580,7 @@
                         <label for="gen-family-name" id="gen-label-family-name" class="gen-label">
                             <i class="bi bi-card-heading" style="color: var(--admin-wine-soft);"></i> Nombre de la Familia:
                         </label>
-                        <input type="text" id="gen-family-name" class="gen-input" placeholder="Ej: Familia Esparza Morales">
+                        <input type="text" id="gen-family-name" class="gen-input" placeholder="Ej: Familia Castillo Morales">
                     </div>
                     <div class="gen-field gen-field-sm">
                         <label for="gen-family-passes" id="gen-label-family-passes" class="gen-label">
@@ -2655,10 +2655,10 @@
                             </p>
                         </div>
                         <div class="excel-step-actions">
-                            <a href="assets/plantilla_invitados_xv_lizette.xlsx" download="Plantilla_Invitados_XV_Lizette.xlsx" id="btn-download-xlsx-tpl" class="btn-download-tpl">
+                            <a href="assets/plantilla_invitados_xv_lizette.xlsx" download="Plantilla_Invitados_XV_Valentina.xlsx" id="btn-download-xlsx-tpl" class="btn-download-tpl">
                                 <i class="bi bi-file-earmark-excel-fill"></i> Descargar Excel (.xlsx)
                             </a>
-                            <a href="assets/plantilla_invitados_xv_lizette.csv" download="Plantilla_Invitados_XV_Lizette.csv" id="btn-download-csv-tpl" class="btn-download-tpl-secondary">
+                            <a href="assets/plantilla_invitados_xv_lizette.csv" download="Plantilla_Invitados_XV_Valentina.csv" id="btn-download-csv-tpl" class="btn-download-tpl-secondary">
                                 <i class="bi bi-filetype-csv"></i> Descargar CSV
                             </a>
                         </div>
@@ -2808,7 +2808,7 @@
         </div>
 
         <!-- ========================================================
-             SECCIÓN 3: PALABRAS BONITAS & DEDICATORIAS PARA LIZETTE
+             SECCIÓN 3: PALABRAS BONITAS & DEDICATORIAS PARA VALENTINA
              ======================================================== -->
         <div class="section-responses-card admin-messages-card" style="margin-top: 28px;">
             <div class="panel-card-topbar">
@@ -2817,7 +2817,7 @@
                         <i class="bi bi-envelope-heart-fill"></i>
                     </div>
                     <div>
-                        <h3 class="panel-card-title">Palabras Bonitas para Lizette</h3>
+                        <h3 class="panel-card-title">Palabras Bonitas para Valentina</h3>
                         <p class="panel-card-subtitle">Dedicatorias, bendiciones y mensajes de cariño enviados por tus invitados</p>
                     </div>
                 </div>
@@ -2880,7 +2880,7 @@
 
                 <div class="pwd-reset-hint">
                     <button type="button" id="btn-restore-default-pwd" class="btn-link-restore">
-                        <i class="bi bi-arrow-counterclockwise"></i> Restablecer a la clave original (xvlizette2026)
+                        <i class="bi bi-arrow-counterclockwise"></i> Restablecer a la clave original (xvvalentina2026)
                     </button>
                 </div>
             </form>
@@ -2984,7 +2984,7 @@
 
             if (btnRestoreDefaultPwd) {
                 btnRestoreDefaultPwd.addEventListener("click", () => {
-                    if (confirm("¿Deseas restablecer la contraseña a la clave original (xvlizette2026)?")) {
+                    if (confirm("¿Deseas restablecer la contraseña a la clave original (xvvalentina2026)?")) {
                         const res = adminController.restablecerClave();
                         if (pwdFeedback) {
                             pwdFeedback.style.display = "flex";
@@ -2999,7 +2999,7 @@
             }
 
             // Verificar si ya tiene sesión activa
-            const sesionActiva = sessionStorage.getItem("xv_admin_autenticado") === "true";
+            const sesionActiva = sessionStorage.getItem("xv_valentina_admin_autenticado") === "true";
             if (sesionActiva) {
                 mostrarDashboard();
             }
@@ -3012,7 +3012,7 @@
             }
 
             function cerrarSesion() {
-                sessionStorage.removeItem("xv_admin_autenticado");
+                sessionStorage.removeItem("xv_valentina_admin_autenticado");
                 window.location.reload();
             }
 
@@ -3021,7 +3021,7 @@
                     e.preventDefault();
                     const password = (loginInput.value || "").trim();
                     if (password === adminController.obtenerClave()) {
-                        sessionStorage.setItem("xv_admin_autenticado", "true");
+                        sessionStorage.setItem("xv_valentina_admin_autenticado", "true");
                         mostrarDashboard();
                     } else {
                         if (loginError) {

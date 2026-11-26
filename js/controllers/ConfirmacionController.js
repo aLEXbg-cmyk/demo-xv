@@ -43,7 +43,7 @@ class ConfirmacionController {
             }
         }
         const slug = nombre ? decodeURIComponent(nombre).toLowerCase().replace(/[^a-z0-9]/g, "_") : "general";
-        return `xv_lizette_lock_${slug}`;
+        return `xv_valentina_lock_${slug}`;
     }
 
     verificarConfirmacionPrevia() {
